@@ -1,0 +1,486 @@
+/* ========================================= */
+/* Responsive Styles for Vidhyadhama Website */
+/* ========================================= */
+
+/* General Responsive Adjustments */
+
+/* Tablet and Smaller (max-width: 1023px) */
+@media (max-width: 1023px) {
+    .container {
+        max-width: 720px;
+        padding: 0 15px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    /* Typography Scaling */
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+
+    /* Nav bar Tablet/Mobile adjustments */
+    .navbar .nav-menu {
+        display: none; /* Hide desktop menu */
+    }
+
+    .navbar .hamburger {
+        display: block; /* Show hamburger button */
+    }
+
+    /* Homepage Hero */
+    .homepage-hero-shell {
+        height: 70vh;
+    }
+    .homepage-hero-shell .college-name {
+        font-size: 2.8em;
+    }
+    .homepage-hero-shell .motto {
+        font-size: 1.2em;
+    }
+    .homepage-hero-shell .supporting-line {
+        font-size: 1em;
+    }
+    .homepage-hero-shell .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .homepage-hero-shell .btn-primary,
+    .homepage-hero-shell .btn-secondary {
+        width: 70%;
+        max-width: 280px;
+        padding: 12px 25px;
+    }
+
+    /* Footer adjustments */
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    footer .footer-section {
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
+    footer .footer-section ul {
+        display: inline-block; /* For centering list items */
+    }
+
+    /* Internal Page Hero Small */
+    .page-hero-small {
+        padding: var(--spacing-section-tablet) 0;
+    }
+    .page-hero-small .page-title {
+        font-size: 2.2em;
+    }
+    .page-hero-small .page-subtext {
+        font-size: 1em;
+    }
+
+    /* Section Padding for Tablet */
+    .section-padding {
+        padding: var(--spacing-section-tablet) 0;
+    }
+
+    /* About Page Specifics - Tablet */
+    .vision-mission-cards {
+        flex-direction: column; /* Stack cards vertically */
+        gap: 20px;
+    }
+    .vision-mission-cards .card {
+        padding: 30px;
+    }
+    .vision-mission-cards .card h3 {
+        font-size: 1.6em;
+    }
+    .why-vidhyadhama-section .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .why-points {
+        gap: 15px;
+    }
+    .why-card {
+        min-width: 200px;
+        max-width: 45%; /* Two cards per row */
+        padding: 25px 15px;
+    }
+    .why-card .icon .lucide-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    .why-card p {
+        font-size: 1em;
+    }
+    .commitment-strip {
+        padding: 30px 0;
+        font-size: 1.1em;
+    }
+
+    /* Academics Page Specifics - Tablet */
+    .academics-streams-section .section-title,
+    .academic-system-section .section-title,
+    .coaching-support-section .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .streams-layout {
+        flex-direction: column; /* Stack stream cards */
+        align-items: center;
+        gap: 25px;
+    }
+    .stream-card {
+        max-width: 80%; /* Wider on tablet */
+        min-width: unset;
+        padding: 30px;
+    }
+    .stream-card h3 {
+        font-size: 1.5em;
+    }
+    .info-cards-grid,
+    .support-cards-grid {
+        gap: 25px;
+    }
+    .info-cards-grid .info-card,
+    .support-cards-grid .support-card {
+        max-width: 45%; /* Two cards per row */
+        min-width: 250px;
+        padding: 25px;
+    }
+    .info-card h3,
+    .support-card h3 {
+        font-size: 1.4em;
+    }
+    .info-card .icon .lucide-icon svg,
+    .support-card .icon .lucide-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Admissions Page Specifics - Tablet */
+    .page-hero-actions .btn-primary {
+        padding: 12px 25px;
+        font-size: 0.95em;
+    }
+    .eligibility-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .visual-process-steps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Allow 2 columns if space */
+        gap: 25px;
+    }
+    .process-step-card {
+        max-width: 48%; /* Adjust for two columns */
+        min-width: unset;
+        padding: 25px 15px;
+    }
+    .process-step-card .step-number-visual {
+        margin-bottom: 8px;
+    }
+    .docs-checklist-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+        max-width: 700px;
+    }
+    .doc-item {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+    .date-item {
+        max-width: 80%;
+        padding: 20px;
+    }
+    .strong-cta-section {
+        padding: 60px 0;
+    }
+    .strong-cta-section .cta-heading {
+        font-size: 2.2em;
+        margin-bottom: 25px;
+    }
+    .strong-cta-section .btn-cta-large {
+        padding: 14px 30px;
+        font-size: 1em;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    body {
+        font-size: 13px;
+    }
+
+    /* Typography Scaling */
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.6em; }
+    h3 { font-size: 1.3em; }
+
+    /* Navbar Mobile Specifics */
+    .navbar {
+        padding: 10px 0;
+        background-color: var(--color-light-ivory);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .navbar .nav-logo img {
+        height: 35px;
+    }
+    .navbar .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--color-light-ivory);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--color-border-light);
+        padding: 10px 0;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    .navbar .nav-menu.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .navbar .nav-menu a {
+        padding: 12px 20px;
+        text-align: left;
+        border-bottom: 1px solid var(--color-off-white);
+        width: 100%;
+    }
+    .navbar .nav-menu a:last-child {
+        border-bottom: none;
+    }
+
+    /* Homepage Hero */
+    .homepage-hero-shell {
+        height: 60vh;
+    }
+    .homepage-hero-shell .college-name {
+        font-size: 2em;
+    }
+    .homepage-hero-shell .motto {
+        font-size: 1.1em;
+    }
+    .homepage-hero-shell .hero-content {
+        padding: 15px;
+    }
+    .homepage-hero-shell .btn-primary,
+    .homepage-hero-shell .btn-secondary {
+        width: 90%;
+        max-width: 300px;
+    }
+    .achievement-strip {
+        gap: 15px;
+        font-size: 0.85em;
+    }
+    .achievement-item {
+        padding: 8px 15px;
+    }
+
+    /* Internal Page Hero Small */
+    .page-hero-small {
+        padding: var(--spacing-section-mobile) 0;
+    }
+    .page-hero-small .page-title {
+        font-size: 1.8em;
+    }
+    .page-hero-small .page-subtext {
+        font-size: 0.9em;
+    }
+
+    /* Section Padding for Mobile */
+    .section-padding {
+        padding: var(--spacing-section-mobile) 0;
+    }
+
+    /* About Page Specifics - Mobile */
+    .vision-mission-cards .card {
+        padding: 25px;
+    }
+    .vision-mission-cards .card h3 {
+        font-size: 1.4em;
+    }
+    .about-content-section p {
+        font-size: 0.95em;
+    }
+    .why-vidhyadhama-section .section-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .why-points {
+        flex-direction: column; /* Stack all cards vertically */
+        align-items: center;
+        gap: 15px;
+    }
+    .why-card {
+        max-width: 90%; /* Full width cards */
+        min-width: unset;
+    }
+    .why-card .icon .lucide-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    .why-card p {
+        font-size: 0.95em;
+    }
+    .commitment-strip {
+        padding: 25px 0;
+        font-size: 1em;
+    }
+
+    /* Academics Page Specifics - Mobile */
+    .academics-streams-section .section-title,
+    .academic-system-section .section-title,
+    .coaching-support-section .section-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .streams-layout {
+        gap: 20px;
+    }
+    .stream-card {
+        max-width: 90%; /* Full width cards */
+        padding: 25px;
+    }
+    .stream-card h3 {
+        font-size: 1.4em;
+    }
+    .info-cards-grid,
+    .support-cards-grid {
+        flex-direction: column; /* Stack all cards vertically */
+        align-items: center;
+        gap: 20px;
+    }
+    .info-cards-grid .info-card,
+    .support-cards-grid .support-card {
+        max-width: 90%; /* Full width cards */
+        min-width: unset;
+        padding: 20px;
+    }
+    .info-card h3,
+    .support-card h3 {
+        font-size: 1.2em;
+    }
+    .info-card .icon .lucide-icon svg,
+    .support-card .icon .lucide-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Admissions Page Specifics - Mobile */
+    .page-hero-actions .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .eligibility-cards-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 20px;
+    }
+    .eligibility-card {
+        padding: 25px;
+    }
+    .eligibility-card h3 {
+        font-size: 1.3em;
+    }
+    .eligibility-card .eligibility-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    .visual-process-steps-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 20px;
+    }
+    .process-step-card {
+        max-width: 90%; /* Full width on mobile */
+        padding: 25px;
+    }
+    .process-step-card .step-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    .process-step-card h3 {
+        font-size: 1.3em;
+    }
+    .process-step-card .step-number-visual {
+        margin-bottom: 10px;
+    }
+    .docs-checklist-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 10px;
+    }
+    .doc-item {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+    .doc-item .icon-checkmark svg {
+        width: 24px;
+        height: 24px;
+    }
+    .date-item {
+        max-width: 90%;
+        padding: 20px;
+    }
+    .date-item h3 {
+        font-size: 1.3em;
+    }
+    .strong-cta-section {
+        padding: 40px 0;
+    }
+    .strong-cta-section .cta-heading {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .strong-cta-section .btn-cta-large {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+
+/* Hamburger Button Styling (needs to be outside media queries to be visible) */
+.hamburger {
+    display: none; /* Hidden by default on desktop, shown by media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001; /* Ensure it's above other elements */
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-navy-dark); /* Navy color */
+    margin: 5px 0;
+    transition: var(--transition-base);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Ensure the nav-container is flexible to properly position hamburger and logo */
+/* This rule is already in style.css but ensure its presence */
+.navbar .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

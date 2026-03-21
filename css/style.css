@@ -1,0 +1,1446 @@
+/* Base CSS System for Vidhyadhama Website */
+
+/* 1. Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global fluid images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Helps remove extra space below images */
+}
+
+/* Color Variables */
+:root {
+    --color-navy-dark: #1A2C42;
+    --color-off-white: #F8F8F8;
+    --color-light-ivory: #FFFFFF; /* Using white for cards for crisp look */
+    --color-light-blue-grey: #F0F4F8;
+    --color-blue-accent: #007bff;
+    --color-text-dark: #333;
+    --color-text-muted: #555;
+    --color-border-light: #E0E0E0;
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-prominent: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --border-radius-base: 8px;
+    --border-radius-button: 6px;
+    --transition-base: all 0.3s ease;
+
+    /* Section Spacing */
+    --spacing-section-desktop: 80px;
+    --spacing-section-tablet: 60px;
+    --spacing-section-mobile: 40px;
+}
+
+/* 2. Body & Global Typography */
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--color-off-white);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+p { margin-bottom: 1em; }
+
+/* 3. Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Global Card Styles */
+.card {
+    background-color: var(--color-light-ivory);
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-prominent); /* Slightly more prominent shadow on hover */
+}
+
+/* Icon Styling */
+.lucide-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-navy-dark); /* Default icon color */
+    flex-shrink: 0;
+}
+.lucide-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* Section Padding - consistent vertical spacing for main content sections */
+.section-padding {
+    padding: var(--spacing-section-desktop) 0;
+}
+
+/* Content Max Width - for readability of long texts */
+.content-max-width {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Backgrounds */
+.bg-light-ivory {
+    background-color: var(--color-light-blue-grey);
+}
+.bg-navy-dark {
+    background-color: var(--color-navy-dark);
+}
+
+
+/* 4. Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+/* 5. Links */
+a {
+    color: var(--color-navy-dark);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--color-blue-accent);
+}
+
+/* Navbar specific links */
+.nav-menu a {
+    padding: 8px 15px;
+}
+
+/* 6. Sticky Navbar */
+.navbar.sticky-top {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-light-ivory);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+}
+
+/* 7. CTA Button (e.g., for Admissions link) */
+a.cta {
+    background-color: var(--color-navy-dark);
+    color: var(--color-light-ivory);
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-base);
+    border: 2px solid transparent;
+}
+
+a.cta:hover {
+    background-color: #2e4a6a;
+    text-decoration: none;
+}
+
+/* Logo specific styles */
+.nav-logo img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* Nav Menu specific styles for flex layout */
+.nav-menu {
+    display: flex;
+    gap: 10px;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* General Layout for nav-container to ensure internal flex works */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Homepage Hero Section */
+.homepage-hero-shell {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-light-ivory);
+    text-align: center;
+}
+
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    background-color: var(--color-navy-dark);
+    background-image: linear-gradient(rgba(26, 44, 66, 0.7), rgba(26, 44, 66, 0.7));
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.college-name {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+}
+
+.motto {
+    font-size: 1.4em;
+    font-style: italic;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.supporting-line {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.hero-actions {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: var(--color-navy-dark);
+    color: var(--color-light-ivory);
+    padding: 14px 28px;
+    border-radius: var(--border-radius-button);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-base);
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    background-color: #2e4a6a;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light-ivory);
+    padding: 14px 28px;
+    border-radius: var(--border-radius-button);
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--color-light-ivory);
+    transition: var(--transition-base);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Achievement Strip */
+.achievement-strip {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.achievement-item {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ======================== */
+/* Internal Page Base Styles */
+/* ======================== */
+
+/* General page shell for internal pages */
+.inner-page-shell {
+    padding-top: var(--spacing-section-desktop); /* Space below navbar */
+    padding-bottom: var(--spacing-section-desktop); /* Space before footer */
+}
+
+/* Page Hero Small (for internal pages like About) */
+.page-hero-small {
+    background-color: var(--color-off-white);
+    background-image: linear-gradient(180deg, #FDFDFD, #F0F0F0);
+    padding: var(--spacing-section-desktop) 0;
+    text-align: center;
+    color: var(--color-navy-dark);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-hero-small .page-title {
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.page-hero-small .page-subtext {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* Section Padding - consistent vertical spacing for main content sections */
+.section-padding {
+    padding: var(--spacing-section-desktop) 0;
+}
+
+
+/* ============================ */
+/* About Page Specific Sections */
+/* ============================ */
+
+/* About Content Section */
+.about-content-section p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.05em;
+    color: var(--color-text-dark);
+}
+
+/* Vision & Mission Section */
+.vision-mission-section {
+    background-color: var(--color-light-blue-grey);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.vision-mission-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.vision-mission-cards .card {
+    flex: 1;
+    padding: 35px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.08); /* Override general card border for this specific case */
+}
+
+.vision-mission-cards .card h3 {
+    font-size: 1.8em;
+    color: var(--color-navy-dark);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 10px;
+}
+
+.vision-mission-cards .card p, .vision-mission-cards .card ul {
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.vision-mission-cards .card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.vision-mission-cards .card ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    color: var(--color-text-dark);
+}
+
+.vision-mission-cards .card ul li::before {
+    /* content: '✓'; */ /* Replaced with SVG in HTML */
+    content: ''; /* Remove emoji content */
+    display: inline-block;
+    width: 20px; /* Adjust size of SVG icon */
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0.2em; /* Adjust vertical alignment */
+}
+
+
+/* Why Vidhyadhama Section */
+.why-vidhyadhama-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.why-points {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.why-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-card .icon {
+    font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 15px;
+    background-color: #E6F0FF;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
+    width: 36px;
+    height: 36px;
+    stroke: var(--color-blue-accent);
+}
+
+.why-card p {
+    font-size: 1.1em;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Commitment Strip */
+.commitment-strip {
+    background-color: var(--color-navy-dark);
+    padding: 40px 0;
+    color: var(--color-light-ivory);
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+.commitment-strip .strip-text {
+    margin: 0;
+}
+/* ============================= */
+/* Academics Page Specific Sections */
+/* ============================= */
+
+/* Academics Streams Section */
+.academics-streams-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.streams-layout {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stream-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    padding: 35px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.stream-card h3 {
+    font-size: 1.8em;
+    color: var(--color-blue-accent);
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 15px;
+}
+
+.stream-combinations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.combination-item {
+    background-color: var(--color-off-white);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border-light);
+}
+
+.combination-item h4 {
+    font-size: 1.2em;
+    color: var(--color-navy-dark);
+    margin-bottom: 5px;
+}
+
+.combination-item p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* Academic System Section */
+.academic-system-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-card .icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 20px;
+}
+.info-card .icon .lucide-icon svg { /* Specific styling for SVG inside info-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+
+.info-card h3 {
+    font-size: 1.6em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Coaching & Support Section */
+.coaching-support-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.support-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.support-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.support-card .icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 20px;
+}
+.support-card .icon .lucide-icon svg { /* Specific styling for SVG inside support-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+.support-card h3 {
+    font-size: 1.6em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.support-card p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* =============================== */
+/* Admissions Page Specific Sections */
+/* =============================== */
+
+/* Page Hero actions (for CTA button) */
+.page-hero-actions {
+    margin-top: 25px;
+}
+
+/* Eligibility Section - Upgraded */
+.eligibility-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.eligibility-card {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-soft);
+    border-top: 4px solid var(--color-blue-accent); /* Blue accent bar */
+}
+
+.eligibility-card .eligibility-icon {
+    font-size: 2.5em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 15px;
+    display: block;
+}
+.eligibility-card .eligibility-icon svg { /* Specific styling for SVG inside eligibility-card icon wrapper */
+    width: 36px;
+    height: 36px;
+    stroke: var(--color-blue-accent);
+}
+
+.eligibility-card h3 {
+    font-size: 1.4em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.eligibility-card p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Admission Process Section - Upgraded to Visual Steps */
+.visual-process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.process-step-card {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-soft);
+    border-top: 5px solid var(--color-blue-accent);
+    transition: var(--transition-base);
+}
+
+.process-step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-prominent);
+}
+
+.process-step-card .step-icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 10px;
+    display: block;
+}
+.process-step-card .step-icon svg { /* Specific styling for SVG inside process-step-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+.process-step-card .step-number-visual {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.process-step-card h3 {
+    font-size: 1.5em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.process-step-card p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Required Documents Section - Upgraded Checklist UI */
+.docs-checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.doc-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-light-ivory);
+    padding: 15px 20px;
+    border-radius: var(--border-radius-button);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border-left: 4px solid var(--color-navy-dark); /* Navy accent bar */
+    font-size: 1em;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.doc-item .icon-checkmark {
+    color: var(--color-blue-accent);
+    font-size: 1.2em; /* Overridden by SVG styling */
+    margin-right: 15px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.doc-item .icon-checkmark svg { /* Specific styling for SVG inside doc-item icon wrapper */
+    width: 28px;
+    height: 28px;
+    stroke: var(--color-blue-accent);
+}
+
+
+/* Important Dates Section */
+.dates-info-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.date-item {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    text-align: center;
+    padding: 25px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-subtle);
+    border-bottom: 3px solid var(--color-blue-accent);
+}
+
+.date-item h3 {
+    font-size: 1.4em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.date-item p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Final CTA Section - Upgraded */
+.strong-cta-section {
+    background-color: var(--color-navy-dark);
+    padding: var(--spacing-section-desktop) 0;
+    color: var(--color-light-ivory);
+    text-align: center;
+    margin-top: var(--spacing-section-desktop);
+}
+
+.strong-cta-section .cta-heading {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.strong-cta-section .btn-cta-large {
+    padding: 16px 35px;
+    font-size: 1.1em;
+    border-radius: var(--border-radius-base);
+    border: 2px solid var(--color-light-ivory);
+    transition: var(--transition-base);
+}
+
+.strong-cta-section .btn-cta-large:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Footer branding update - specific styles */
+footer .developer-credit p:last-child {
+    font-size: 0.85em;
+    color: var(--color-text-muted);
+    opacity: 0.7; /* Make it subtle */
+}
+
+/* Small Fix for inner-page-shell padding top */
+.inner-page-shell {
+    padding-top: var(--spacing-section-desktop);
+    padding-bottom: var(--spacing-section-desktop);
+}
+/* This is a temporary addition from before. Will remove or combine.*/
+/* ======================== */
+/* Internal Page Base Styles */
+/* ======================== */
+
+/* General page shell for internal pages */
+.inner-page-shell {
+    padding-top: 20px; /* Space below navbar */
+    padding-bottom: 50px; /* Space before footer */
+}
+
+/* Page Hero Small (for internal pages like About) */
+.page-hero-small {
+    background-color: var(--color-off-white);
+    background-image: linear-gradient(180deg, #FDFDFD, #F0F0F0);
+    padding: 60px 0;
+    text-align: center;
+    color: var(--color-navy-dark);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-hero-small .page-title {
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.page-hero-small .page-subtext {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* Section Padding - consistent vertical spacing for main content sections */
+.section-padding {
+    padding: 70px 0;
+}
+
+/* Content Max Width - for readability of long texts */
+.content-max-width {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================ */
+/* About Page Specific Sections */
+/* ============================ */
+
+/* About Content Section */
+.about-content-section p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.05em;
+    color: var(--color-text-dark);
+}
+
+/* Vision & Mission Section */
+.vision-mission-section {
+    background-color: var(--color-light-blue-grey);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.vision-mission-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.vision-mission-cards .card {
+    flex: 1;
+    padding: 35px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.08); /* Override general card border for this specific case */
+}
+
+.vision-mission-cards .card h3 {
+    font-size: 1.8em;
+    color: var(--color-navy-dark);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 10px;
+}
+
+.vision-mission-cards .card p, .vision-mission-cards .card ul {
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.vision-mission-cards .card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.vision-mission-cards .card ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+    color: var(--color-text-dark);
+}
+
+.vision-mission-cards .card ul li::before {
+    /* content: '✓'; */ /* Replaced with SVG in HTML */
+    content: ''; /* Remove emoji content */
+    display: inline-block;
+    width: 20px; /* Adjust size of SVG icon */
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0.2em; /* Adjust vertical alignment */
+}
+
+
+/* Why Vidhyadhama Section */
+.why-vidhyadhama-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.why-points {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.why-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-card .icon {
+    font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 15px;
+    background-color: #E6F0FF;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
+    width: 36px;
+    height: 36px;
+    stroke: var(--color-blue-accent);
+}
+
+.why-card p {
+    font-size: 1.1em;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Commitment Strip */
+.commitment-strip {
+    background-color: var(--color-navy-dark);
+    padding: 40px 0;
+    color: var(--color-light-ivory);
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+.commitment-strip .strip-text {
+    margin: 0;
+}
+/* ============================= */
+/* Academics Page Specific Sections */
+/* ============================= */
+
+/* Academics Streams Section */
+.academics-streams-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.streams-layout {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stream-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    padding: 35px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.stream-card h3 {
+    font-size: 1.8em;
+    color: var(--color-blue-accent);
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 15px;
+}
+
+.stream-combinations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.combination-item {
+    background-color: var(--color-off-white);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border-light);
+}
+
+.combination-item h4 {
+    font-size: 1.2em;
+    color: var(--color-navy-dark);
+    margin-bottom: 5px;
+}
+
+.combination-item p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+/* Academic System Section */
+.academic-system-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-card .icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 20px;
+}
+.info-card .icon .lucide-icon svg { /* Specific styling for SVG inside info-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+
+.info-card h3 {
+    font-size: 1.6em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Coaching & Support Section */
+.coaching-support-section .section-title {
+    font-size: 2.5em;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.support-cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.support-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.support-card .icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 20px;
+}
+.support-card .icon .lucide-icon svg { /* Specific styling for SVG inside support-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+.support-card h3 {
+    font-size: 1.6em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.support-card p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* =============================== */
+/* Admissions Page Specific Sections */
+/* =============================== */
+
+/* Page Hero actions (for CTA button) */
+.page-hero-actions {
+    margin-top: 25px;
+}
+
+/* Eligibility Section - Upgraded */
+.eligibility-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.eligibility-card {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-soft);
+    border-top: 4px solid var(--color-blue-accent); /* Blue accent bar */
+}
+
+.eligibility-card .eligibility-icon {
+    font-size: 2.5em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 15px;
+    display: block;
+}
+.eligibility-card .eligibility-icon svg { /* Specific styling for SVG inside eligibility-card icon wrapper */
+    width: 36px;
+    height: 36px;
+    stroke: var(--color-blue-accent);
+}
+
+.eligibility-card h3 {
+    font-size: 1.4em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.eligibility-card p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Admission Process Section - Upgraded to Visual Steps */
+.visual-process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.process-step-card {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-soft);
+    border-top: 5px solid var(--color-blue-accent);
+    transition: var(--transition-base);
+}
+
+.process-step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-prominent);
+}
+
+.process-step-card .step-icon {
+    font-size: 3em; /* Overridden by SVG styling */
+    color: var(--color-blue-accent);
+    margin-bottom: 10px;
+    display: block;
+}
+.process-step-card .step-icon svg { /* Specific styling for SVG inside process-step-card icon wrapper */
+    width: 40px;
+    height: 40px;
+    stroke: var(--color-blue-accent);
+}
+
+.process-step-card .step-number-visual {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.process-step-card h3 {
+    font-size: 1.5em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.process-step-card p {
+    font-size: 0.95em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Required Documents Section - Upgraded Checklist UI */
+.docs-checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.doc-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-light-ivory);
+    padding: 15px 20px;
+    border-radius: var(--border-radius-button);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border-left: 4px solid var(--color-navy-dark); /* Navy accent bar */
+    font-size: 1em;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.doc-item .icon-checkmark {
+    color: var(--color-blue-accent);
+    font-size: 1.2em; /* Overridden by SVG styling */
+    margin-right: 15px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.doc-item .icon-checkmark svg { /* Specific styling for SVG inside doc-item icon wrapper */
+    width: 28px;
+    height: 28px;
+    stroke: var(--color-blue-accent);
+}
+
+
+/* Important Dates Section */
+.dates-info-grid {
+    display: flex; /* Changed from grid to flex for simpler stacking */
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.date-item {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    text-align: center;
+    padding: 25px;
+    background-color: var(--color-light-ivory);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-subtle);
+    border-bottom: 3px solid var(--color-blue-accent);
+}
+
+.date-item h3 {
+    font-size: 1.4em;
+    color: var(--color-navy-dark);
+    margin-bottom: 10px;
+}
+
+.date-item p {
+    font-size: 1em;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Final CTA Section - Upgraded */
+.strong-cta-section {
+    background-color: var(--color-navy-dark);
+    padding: var(--spacing-section-desktop) 0;
+    color: var(--color-light-ivory);
+    text-align: center;
+    margin-top: var(--spacing-section-desktop);
+}
+
+.strong-cta-section .cta-heading {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.strong-cta-section .btn-cta-large {
+    padding: 16px 35px;
+    font-size: 1.1em;
+    border-radius: var(--border-radius-base);
+    border: 2px solid var(--color-light-ivory);
+    transition: var(--transition-base);
+}
+
+.strong-cta-section .btn-cta-large:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Footer branding update - specific styles */
+footer .developer-credit p:last-child {
+    font-size: 0.85em;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
