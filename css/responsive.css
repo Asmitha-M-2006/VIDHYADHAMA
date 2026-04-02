@@ -460,7 +460,7 @@
     display: block;
     width: 25px;
     height: 3px;
-    background-color: var(--color-navy-dark); /* Navy color */
+    background-color: var(--color-primary); /* Navy color */
     margin: 5px 0;
     transition: var(--transition-base);
 }

@@ -16,18 +16,19 @@ img {
 
 /* Color Variables */
 :root {
-    --color-navy-dark: #1A2C42;
-    --color-off-white: #F8F8F8;
-    --color-light-ivory: #FFFFFF; /* Using white for cards for crisp look */
-    --color-light-blue-grey: #F0F4F8;
-    --color-blue-accent: #007bff;
-    --color-text-dark: #333;
-    --color-text-muted: #555;
-    --color-border-light: #E0E0E0;
-    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
-    --shadow-prominent: 0 8px 20px rgba(0, 0, 0, 0.1);
-    --border-radius-base: 8px;
-    --border-radius-button: 6px;
+    --color-primary: #0f172a; /* dark navy */
+    --color-primary-rgb: 15, 23, 42; /* RGB values for rgba() usage */
+    --color-secondary: #1e293b;
+    --color-accent: #3b82f6;
+    --color-background: #f8fafc;
+    --color-card: #ffffff;
+    --color-border: #e2e8f0;
+
+    --color-text-dark: var(--color-primary);
+    --color-text-muted: #64748b; /* Lighter shade for muted text */
+
+    --border-radius-base: 16px; /* Premium card border-radius */
+    --border-radius-button: 9999px; /* Rounded modern style */
     --transition-base: all 0.3s ease;
 
     /* Section Spacing */
@@ -38,15 +39,15 @@ img {
 
 /* 2. Body & Global Typography */
 body {
-    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: var(--color-off-white);
-    color: var(--color-text-dark);
+    font-family: 'Inter', sans-serif; /* Changed to Inter or system font stack */
+    background-color: var(--color-background);
+    color: var(--color-text-muted); /* Main body text color */
     line-height: 1.6;
     font-size: 16px; /* Base font size */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0.5em;
@@ -67,16 +68,16 @@ p { margin-bottom: 1em; }
 
 /* Global Card Styles */
 .card {
-    background-color: var(--color-light-ivory);
-    border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border */
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
     border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Soft shadow */
     transition: var(--transition-base);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-prominent); /* Slightly more prominent shadow on hover */
+    transform: translateY(-6px); /* Subtle hover lift */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Increased shadow on hover */
 }
 
 /* Icon Styling */
@@ -84,7 +85,7 @@ p { margin-bottom: 1em; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-navy-dark); /* Default icon color */
+    color: var(--color-primary); /* Default icon color */
     flex-shrink: 0;
 }
 .lucide-icon svg {
@@ -94,6 +95,15 @@ p { margin-bottom: 1em; }
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+/* Global Icon Class for direct usage */
+.icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-primary); /* Use primary color for icons */
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 
@@ -110,10 +120,10 @@ p { margin-bottom: 1em; }
 
 /* Backgrounds */
 .bg-light-ivory {
-    background-color: var(--color-light-blue-grey);
+    background-color: var(--color-background);
 }
 .bg-navy-dark {
-    background-color: var(--color-navy-dark);
+    background-color: var(--color-primary);
 }
 
 
@@ -127,14 +137,14 @@ p { margin-bottom: 1em; }
 
 /* 5. Links */
 a {
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-decoration: none;
     transition: var(--transition-base);
 }
 
 a:hover {
     text-decoration: underline;
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
 }
 
 /* Navbar specific links */
@@ -146,16 +156,16 @@ a:hover {
 .navbar.sticky-top {
     position: sticky;
     top: 0;
-    background-color: var(--color-light-ivory);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-card);
+    box-shadow: 0 2px 5px rgba(var(--color-primary-rgb), 0.1);
     z-index: 1000;
     width: 100%;
 }
 
 /* 7. CTA Button (e.g., for Admissions link) */
 a.cta {
-    background-color: var(--color-navy-dark);
-    color: var(--color-light-ivory);
+    background-color: var(--color-primary);
+    color: var(--color-card);
     border-radius: 20px;
     padding: 10px 20px;
     text-decoration: none;
@@ -165,7 +175,7 @@ a.cta {
 }
 
 a.cta:hover {
-    background-color: #2e4a6a;
+    background-color: var(--color-secondary);
     text-decoration: none;
 }
 
@@ -201,7 +211,7 @@ a.cta:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     text-align: center;
 }
 
@@ -215,8 +225,8 @@ a.cta:hover {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
-    background-color: var(--color-navy-dark);
-    background-image: linear-gradient(rgba(26, 44, 66, 0.7), rgba(26, 44, 66, 0.7));
+    background-color: var(--color-primary);
+    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.7), rgba(var(--color-primary-rgb), 0.7));
 }
 
 .hero-overlay {
@@ -268,8 +278,8 @@ a.cta:hover {
 
 /* Primary Button */
 .btn-primary {
-    background-color: var(--color-navy-dark);
-    color: var(--color-light-ivory);
+    background-color: var(--color-primary);
+    color: var(--color-card);
     padding: 14px 28px;
     border-radius: var(--border-radius-button);
     text-decoration: none;
@@ -279,7 +289,7 @@ a.cta:hover {
 }
 
 .btn-primary:hover {
-    background-color: #2e4a6a;
+    background-color: var(--color-secondary);
     transform: translateY(-2px);
     text-decoration: none;
 }
@@ -287,12 +297,12 @@ a.cta:hover {
 /* Secondary Button */
 .btn-secondary {
     background-color: transparent;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     padding: 14px 28px;
     border-radius: var(--border-radius-button);
     text-decoration: none;
     font-weight: 600;
-    border: 2px solid var(--color-light-ivory);
+    border: 2px solid var(--color-card);
     transition: var(--transition-base);
 }
 
@@ -334,12 +344,11 @@ a.cta:hover {
 
 /* Page Hero Small (for internal pages like About) */
 .page-hero-small {
-    background-color: var(--color-off-white);
-    background-image: linear-gradient(180deg, #FDFDFD, #F0F0F0);
+    background-color: var(--color-background);
     padding: var(--spacing-section-desktop) 0;
     text-align: center;
-    color: var(--color-navy-dark);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .page-hero-small .page-title {
@@ -371,14 +380,14 @@ a.cta:hover {
     margin-bottom: 20px;
     line-height: 1.7;
     font-size: 1.05em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
 }
 
 /* Vision & Mission Section */
 .vision-mission-section {
-    background-color: var(--color-light-blue-grey);
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .vision-mission-cards {
@@ -391,14 +400,14 @@ a.cta:hover {
     flex: 1;
     padding: 35px;
     text-align: left;
-    border: 1px solid rgba(0,0,0,0.08); /* Override general card border for this specific case */
+    border: 1px solid var(--color-border); /* Override general card border for this specific case */
 }
 
 .vision-mission-cards .card h3 {
     font-size: 1.8em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 15px;
-    border-bottom: 2px solid var(--color-border-light);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 10px;
 }
 
@@ -417,7 +426,7 @@ a.cta:hover {
     margin-bottom: 10px;
     position: relative;
     padding-left: 30px;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
 }
 
 .vision-mission-cards .card ul li::before {
@@ -438,7 +447,7 @@ a.cta:hover {
 /* Why Vidhyadhama Section */
 .why-vidhyadhama-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -463,9 +472,9 @@ a.cta:hover {
 
 .why-card .icon {
     font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 15px;
-    background-color: #E6F0FF;
+    background-color: var(--color-background);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -476,21 +485,21 @@ a.cta:hover {
 .why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
     width: 36px;
     height: 36px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .why-card p {
     font-size: 1.1em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
     line-height: 1.5;
     font-weight: 500;
 }
 
 /* Commitment Strip */
 .commitment-strip {
-    background-color: var(--color-navy-dark);
+    background-color: var(--color-primary);
     padding: 40px 0;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     font-size: 1.3em;
     font-weight: 500;
     margin-top: 50px;
@@ -506,7 +515,7 @@ a.cta:hover {
 /* Academics Streams Section */
 .academics-streams-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -530,10 +539,10 @@ a.cta:hover {
 
 .stream-card h3 {
     font-size: 1.8em;
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 25px;
     text-align: center;
-    border-bottom: 2px solid var(--color-border-light);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 15px;
 }
 
@@ -552,7 +561,7 @@ a.cta:hover {
 
 .combination-item h4 {
     font-size: 1.2em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 5px;
 }
 
@@ -565,7 +574,7 @@ a.cta:hover {
 /* Academic System Section */
 .academic-system-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -590,19 +599,19 @@ a.cta:hover {
 
 .info-card .icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 20px;
 }
 .info-card .icon .lucide-icon svg { /* Specific styling for SVG inside info-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 
 .info-card h3 {
     font-size: 1.6em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -615,7 +624,7 @@ a.cta:hover {
 /* Coaching & Support Section */
 .coaching-support-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -640,18 +649,18 @@ a.cta:hover {
 
 .support-card .icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 20px;
 }
 .support-card .icon .lucide-icon svg { /* Specific styling for SVG inside support-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .support-card h3 {
     font-size: 1.6em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -683,27 +692,27 @@ a.cta:hover {
 .eligibility-card {
     text-align: center;
     padding: 30px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-soft);
-    border-top: 4px solid var(--color-blue-accent); /* Blue accent bar */
+    border-top: 4px solid var(--color-accent); /* Blue accent bar */
 }
 
 .eligibility-card .eligibility-icon {
     font-size: 2.5em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 15px;
     display: block;
 }
 .eligibility-card .eligibility-icon svg { /* Specific styling for SVG inside eligibility-card icon wrapper */
     width: 36px;
     height: 36px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .eligibility-card h3 {
     font-size: 1.4em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -726,7 +735,7 @@ a.cta:hover {
 .process-step-card {
     text-align: center;
     padding: 30px 20px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-soft);
     border-top: 5px solid var(--color-blue-accent);
@@ -740,14 +749,14 @@ a.cta:hover {
 
 .process-step-card .step-icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 10px;
     display: block;
 }
 .process-step-card .step-icon svg { /* Specific styling for SVG inside process-step-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .process-step-card .step-number-visual {
@@ -760,7 +769,7 @@ a.cta:hover {
 
 .process-step-card h3 {
     font-size: 1.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -782,19 +791,19 @@ a.cta:hover {
 .doc-item {
     display: flex;
     align-items: center;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     padding: 15px 20px;
     border-radius: var(--border-radius-button);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-    border-left: 4px solid var(--color-navy-dark); /* Navy accent bar */
+    box-shadow: 0 2px 5px rgba(var(--color-primary-rgb), 0.03);
+    border-left: 4px solid var(--color-primary); /* Navy accent bar */
     font-size: 1em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
     line-height: 1.5;
     text-align: left;
 }
 
 .doc-item .icon-checkmark {
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     font-size: 1.2em; /* Overridden by SVG styling */
     margin-right: 15px;
     font-weight: bold;
@@ -803,7 +812,7 @@ a.cta:hover {
 .doc-item .icon-checkmark svg { /* Specific styling for SVG inside doc-item icon wrapper */
     width: 28px;
     height: 28px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 
@@ -823,7 +832,7 @@ a.cta:hover {
     max-width: 380px;
     text-align: center;
     padding: 25px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-subtle);
     border-bottom: 3px solid var(--color-blue-accent);
@@ -831,7 +840,7 @@ a.cta:hover {
 
 .date-item h3 {
     font-size: 1.4em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -843,9 +852,9 @@ a.cta:hover {
 
 /* Final CTA Section - Upgraded */
 .strong-cta-section {
-    background-color: var(--color-navy-dark);
+    background-color: var(--color-primary);
     padding: var(--spacing-section-desktop) 0;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     text-align: center;
     margin-top: var(--spacing-section-desktop);
 }
@@ -861,7 +870,7 @@ a.cta:hover {
     padding: 16px 35px;
     font-size: 1.1em;
     border-radius: var(--border-radius-base);
-    border: 2px solid var(--color-light-ivory);
+    border: 2px solid var(--color-card);
     transition: var(--transition-base);
 }
 
@@ -900,7 +909,7 @@ footer .developer-credit p:last-child {
     background-image: linear-gradient(180deg, #FDFDFD, #F0F0F0);
     padding: 60px 0;
     text-align: center;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -938,14 +947,14 @@ footer .developer-credit p:last-child {
     margin-bottom: 20px;
     line-height: 1.7;
     font-size: 1.05em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
 }
 
 /* Vision & Mission Section */
 .vision-mission-section {
-    background-color: var(--color-light-blue-grey);
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .vision-mission-cards {
@@ -958,14 +967,14 @@ footer .developer-credit p:last-child {
     flex: 1;
     padding: 35px;
     text-align: left;
-    border: 1px solid rgba(0,0,0,0.08); /* Override general card border for this specific case */
+    border: 1px solid var(--color-border); /* Override general card border for this specific case */
 }
 
 .vision-mission-cards .card h3 {
     font-size: 1.8em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 15px;
-    border-bottom: 2px solid var(--color-border-light);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 10px;
 }
 
@@ -984,7 +993,7 @@ footer .developer-credit p:last-child {
     margin-bottom: 10px;
     position: relative;
     padding-left: 30px;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
 }
 
 .vision-mission-cards .card ul li::before {
@@ -1005,7 +1014,7 @@ footer .developer-credit p:last-child {
 /* Why Vidhyadhama Section */
 .why-vidhyadhama-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -1030,9 +1039,9 @@ footer .developer-credit p:last-child {
 
 .why-card .icon {
     font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 15px;
-    background-color: #E6F0FF;
+    background-color: var(--color-background);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -1043,21 +1052,21 @@ footer .developer-credit p:last-child {
 .why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
     width: 36px;
     height: 36px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .why-card p {
     font-size: 1.1em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
     line-height: 1.5;
     font-weight: 500;
 }
 
 /* Commitment Strip */
 .commitment-strip {
-    background-color: var(--color-navy-dark);
+    background-color: var(--color-primary);
     padding: 40px 0;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     font-size: 1.3em;
     font-weight: 500;
     margin-top: 50px;
@@ -1073,7 +1082,7 @@ footer .developer-credit p:last-child {
 /* Academics Streams Section */
 .academics-streams-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -1097,10 +1106,10 @@ footer .developer-credit p:last-child {
 
 .stream-card h3 {
     font-size: 1.8em;
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 25px;
     text-align: center;
-    border-bottom: 2px solid var(--color-border-light);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 15px;
 }
 
@@ -1119,7 +1128,7 @@ footer .developer-credit p:last-child {
 
 .combination-item h4 {
     font-size: 1.2em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 5px;
 }
 
@@ -1132,7 +1141,7 @@ footer .developer-credit p:last-child {
 /* Academic System Section */
 .academic-system-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -1157,19 +1166,19 @@ footer .developer-credit p:last-child {
 
 .info-card .icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 20px;
 }
 .info-card .icon .lucide-icon svg { /* Specific styling for SVG inside info-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 
 .info-card h3 {
     font-size: 1.6em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -1182,7 +1191,7 @@ footer .developer-credit p:last-child {
 /* Coaching & Support Section */
 .coaching-support-section .section-title {
     font-size: 2.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     text-align: center;
     margin-bottom: 50px;
 }
@@ -1207,18 +1216,18 @@ footer .developer-credit p:last-child {
 
 .support-card .icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 20px;
 }
 .support-card .icon .lucide-icon svg { /* Specific styling for SVG inside support-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .support-card h3 {
     font-size: 1.6em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -1250,27 +1259,27 @@ footer .developer-credit p:last-child {
 .eligibility-card {
     text-align: center;
     padding: 30px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-soft);
-    border-top: 4px solid var(--color-blue-accent); /* Blue accent bar */
+    border-top: 4px solid var(--color-accent); /* Blue accent bar */
 }
 
 .eligibility-card .eligibility-icon {
     font-size: 2.5em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 15px;
     display: block;
 }
 .eligibility-card .eligibility-icon svg { /* Specific styling for SVG inside eligibility-card icon wrapper */
     width: 36px;
     height: 36px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .eligibility-card h3 {
     font-size: 1.4em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -1293,7 +1302,7 @@ footer .developer-credit p:last-child {
 .process-step-card {
     text-align: center;
     padding: 30px 20px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-soft);
     border-top: 5px solid var(--color-blue-accent);
@@ -1307,14 +1316,14 @@ footer .developer-credit p:last-child {
 
 .process-step-card .step-icon {
     font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     margin-bottom: 10px;
     display: block;
 }
 .process-step-card .step-icon svg { /* Specific styling for SVG inside process-step-card icon wrapper */
     width: 40px;
     height: 40px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 .process-step-card .step-number-visual {
@@ -1327,7 +1336,7 @@ footer .developer-credit p:last-child {
 
 .process-step-card h3 {
     font-size: 1.5em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -1349,19 +1358,19 @@ footer .developer-credit p:last-child {
 .doc-item {
     display: flex;
     align-items: center;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     padding: 15px 20px;
     border-radius: var(--border-radius-button);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-    border-left: 4px solid var(--color-navy-dark); /* Navy accent bar */
+    box-shadow: 0 2px 5px rgba(var(--color-primary-rgb), 0.03);
+    border-left: 4px solid var(--color-primary); /* Navy accent bar */
     font-size: 1em;
-    color: var(--color-text-dark);
+    color: var(--color-primary);
     line-height: 1.5;
     text-align: left;
 }
 
 .doc-item .icon-checkmark {
-    color: var(--color-blue-accent);
+    color: var(--color-accent);
     font-size: 1.2em; /* Overridden by SVG styling */
     margin-right: 15px;
     font-weight: bold;
@@ -1370,7 +1379,7 @@ footer .developer-credit p:last-child {
 .doc-item .icon-checkmark svg { /* Specific styling for SVG inside doc-item icon wrapper */
     width: 28px;
     height: 28px;
-    stroke: var(--color-blue-accent);
+    stroke: var(--color-accent);
 }
 
 
@@ -1390,7 +1399,7 @@ footer .developer-credit p:last-child {
     max-width: 380px;
     text-align: center;
     padding: 25px;
-    background-color: var(--color-light-ivory);
+    background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-subtle);
     border-bottom: 3px solid var(--color-blue-accent);
@@ -1398,7 +1407,7 @@ footer .developer-credit p:last-child {
 
 .date-item h3 {
     font-size: 1.4em;
-    color: var(--color-navy-dark);
+    color: var(--color-primary);
     margin-bottom: 10px;
 }
 
@@ -1410,9 +1419,9 @@ footer .developer-credit p:last-child {
 
 /* Final CTA Section - Upgraded */
 .strong-cta-section {
-    background-color: var(--color-navy-dark);
+    background-color: var(--color-primary);
     padding: var(--spacing-section-desktop) 0;
-    color: var(--color-light-ivory);
+    color: var(--color-card);
     text-align: center;
     margin-top: var(--spacing-section-desktop);
 }
@@ -1428,7 +1437,7 @@ footer .developer-credit p:last-child {
     padding: 16px 35px;
     font-size: 1.1em;
     border-radius: var(--border-radius-base);
-    border: 2px solid var(--color-light-ivory);
+    border: 2px solid var(--color-card);
     transition: var(--transition-base);
 }
 
