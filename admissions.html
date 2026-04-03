@@ -19,7 +19,7 @@
           <h1 class="page-title">Admissions</h1>
           <p class="page-subtext">Embark on your journey of academic excellence with Vidhyadhama PU College.</p>
           <div class="page-hero-actions">
-            <a href="contact.html" class="btn btn-primary"><i data-lucide="file-text" class="icon"></i> Enquire Now</a>
+            <a href="#enquiry" class="btn btn-primary"><i data-lucide="mail" class="icon"></i> Enquire Now</a>
           </div>
         </div>
       </section>
@@ -130,11 +130,92 @@
         </div>
       </section>
 
+      <!-- Enquiry & Contact Section -->
+      <section id="enquiry" class="enquiry-contact-section section-padding">
+        <div class="container">
+          <h2 class="section-title text-center">Enquiry & Contact</h2>
+          <div class="enquiry-grid">
+            <!-- Contact Info Sidebar -->
+            <div class="contact-info-block">
+              <h3>Get in Touch</h3>
+              <p>Have questions about the admission process? Reach out to our admissions office for personalized guidance.</p>
+              
+              <div class="contact-details-list">
+                <div class="contact-item">
+                  <span class="icon" data-lucide="map-pin"></span>
+                  <div class="text">
+                    <strong>Campus Address</strong>
+                    <p>123 Vidhyadhama Road, Education City</p>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <span class="icon" data-lucide="mail"></span>
+                  <div class="text">
+                    <strong>Email Support</strong>
+                    <p>info@vidhyadhama.edu</p>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <span class="icon" data-lucide="phone"></span>
+                  <div class="text">
+                    <strong>Phone Enquiry</strong>
+                    <p>+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <span class="icon" data-lucide="clock"></span>
+                  <div class="text">
+                    <strong>Office Hours</strong>
+                    <p>Mon - Sat: 9:00 AM - 5:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Enquiry Form -->
+            <div class="enquiry-form-block card">
+              <form id="admissionEnquiryForm" class="admission-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" name="studentName" placeholder="Full Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="contactNumber">Phone Number</label>
+                    <input type="tel" id="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="emailAddress">Email Address</label>
+                  <input type="email" id="emailAddress" name="emailAddress" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="selectedStream">Preferred Stream</label>
+                  <select id="selectedStream" name="selectedStream" required>
+                    <option value="" disabled selected>Select Stream</option>
+                    <option value="science">Science (PCMB/PCMC/PCME)</option>
+                    <option value="commerce">Commerce (CEBA/SEBA/HEBA)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="messageText">Your Message / Enquiry</label>
+                  <textarea id="messageText" name="messageText" rows="4" placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Submit Enquiry</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Final CTA Section - Upgraded -->
       <section class="strong-cta-section bg-navy-dark text-center section-padding">
         <div class="container">
-          <h2 class="cta-heading">Start Your Academic Journey With Us</h2>
-          <a href="contact.html" class="btn btn-secondary btn-cta-large">Contact Us</a>
+          <h2 class="cta-heading">Ready to Start Your Journey?</h2>
+          <p class="cta-subtext">Download our brochure or visit us for a campus tour.</p>
+          <div class="cta-actions" style="margin-top: 30px;">
+            <a href="assets/docs/admission-brochure-2026.pdf" class="btn btn-secondary" target="_blank"><i data-lucide="download" class="icon"></i> Download Brochure</a>
+          </div>
         </div>
       </section>
     </main>

@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const navMenu = document.getElementById('main-nav-menu'); // Using the ID added in navbar.html
 
             if (hamburger && navMenu) {
+                // Add active class to current nav item
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                navMenu.querySelectorAll('a').forEach(link => {
+                    const linkPath = link.getAttribute('href');
+                    if (linkPath === currentPath) {
+                        link.classList.add('active');
+                    }
+                });
+
                 hamburger.addEventListener('click', () => {
                     const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
                     hamburger.setAttribute('aria-expanded', !isExpanded);

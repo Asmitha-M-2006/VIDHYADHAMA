@@ -16,19 +16,21 @@ img {
 
 /* Color Variables */
 :root {
-    --color-primary: #0f172a; /* dark navy */
-    --color-primary-rgb: 15, 23, 42; /* RGB values for rgba() usage */
-    --color-secondary: #1e293b;
-    --color-accent: #3b82f6;
-    --color-background: #f8fafc;
+    --color-primary: #0f172a; /* Deep Navy (Institutional) */
+    --color-primary-dark: #080c19; /* Darker Navy for hovers */
+    --color-primary-rgb: 15, 23, 42;
+    --color-accent: #c5a059; /* Muted Gold / Bronze (Academic Accent) */
+    --color-accent-soft: #e5d5a8; /* Lighter gold for subtle highlights */
+    --color-background: #ffffff; /* Clean white background */
+    --color-bg-soft: #f8fafc; /* Very light grey for section variation */
     --color-card: #ffffff;
     --color-border: #e2e8f0;
 
-    --color-text-dark: var(--color-primary);
-    --color-text-muted: #64748b; /* Lighter shade for muted text */
+    --color-text: #0f172a; /* Dark navy for main headings/text */
+    --color-text-muted: #64748b; /* Soft grey for secondary text */
 
-    --border-radius-base: 16px; /* Premium card border-radius */
-    --border-radius-button: 9999px; /* Rounded modern style */
+    --border-radius-base: 16px;
+    --border-radius-button: 9999px;
     --transition-base: all 0.3s ease;
 
     /* Section Spacing */
@@ -39,11 +41,11 @@ img {
 
 /* 2. Body & Global Typography */
 body {
-    font-family: 'Inter', sans-serif; /* Changed to Inter or system font stack */
+    font-family: 'Inter', sans-serif;
     background-color: var(--color-background);
-    color: var(--color-text-muted); /* Main body text color */
+    color: var(--color-text); /* Main body text color */
     line-height: 1.6;
-    font-size: 16px; /* Base font size */
+    font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -120,20 +122,12 @@ p { margin-bottom: 1em; }
 
 /* Backgrounds */
 .bg-light-ivory {
-    background-color: var(--color-background);
+    background-color: var(--color-bg-soft);
 }
 .bg-navy-dark {
     background-color: var(--color-primary);
 }
 
-
-/* 4. Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-}
 
 /* 5. Links */
 a {
@@ -147,59 +141,305 @@ a:hover {
     color: var(--color-accent);
 }
 
-/* Navbar specific links */
-.nav-menu a {
-    padding: 8px 15px;
-}
-
-/* 6. Sticky Navbar */
-.navbar.sticky-top {
+/* 4. Navbar Wrapper */
+#navbar {
     position: sticky;
     top: 0;
-    background-color: var(--color-card);
-    box-shadow: 0 2px 5px rgba(var(--color-primary-rgb), 0.1);
     z-index: 1000;
+    background-color: var(--color-background);
+    transition: var(--transition-base);
+    width: 100%;
+    border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.06); /* Even subtler border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); /* Soft shadow for better separation */
+}
+
+.navbar {
     width: 100%;
 }
 
-/* 7. CTA Button (e.g., for Admissions link) */
-a.cta {
-    background-color: var(--color-primary);
-    color: var(--color-card);
-    border-radius: 20px;
-    padding: 10px 20px;
+/* Nav Container - Aligned with main content width */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 68px; /* Tighter header height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Brand specific styles */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition-base);
-    border: 2px solid transparent;
+    flex-shrink: 0;
 }
 
-a.cta:hover {
-    background-color: var(--color-secondary);
-    text-decoration: none;
+.brand-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
-/* Logo specific styles */
-.nav-logo img {
-    height: 40px;
-    vertical-align: middle;
+.brand-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary); /* Deep Navy */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
-/* Nav Menu specific styles for flex layout */
+/* Nav Menu styles */
 .nav-menu {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 20px; /* Reduced horizontal spacing between items */
     visibility: visible;
     opacity: 1;
     transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-/* General Layout for nav-container to ensure internal flex works */
-.nav-container {
+/* Navbar specific links */
+.nav-menu a {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Navigation Indicator System (Centered, Thicker, Shorter) */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2.5px; /* Thicker underline */
+    background-color: var(--color-accent); /* Muted Gold */
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Active Page State */
+.nav-menu a.active {
+    color: var(--color-primary-dark);
+}
+
+.nav-menu a.active::after,
+.nav-menu a:hover::after {
+    width: 24px; /* Centered and shorter than text width */
+}
+
+/* Admissions Item - Subtle authority */
+.nav-menu a[href="admissions.html"] {
+    font-weight: 700; /* Stronger weight */
+}
+
+.nav-menu a[href="admissions.html"]::after {
+    width: 24px; /* Same style as active underline */
+    opacity: 0.6; /* Subtly present always */
+}
+
+.nav-menu a[href="admissions.html"]:hover::after,
+.nav-menu a[href="admissions.html"].active::after {
+    opacity: 1;
+}
+
+.nav-menu a .icon {
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+/* Admissions Enquiry Section Styles */
+.enquiry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.contact-info-block h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.contact-info-block p {
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.contact-item .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    stroke-width: 2;
+    margin-top: 3px;
+}
+
+.contact-item .text strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+}
+
+.contact-item .text p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.enquiry-form-block {
+    padding: 40px;
+}
+
+.admission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition-base);
+    background-color: var(--color-background);
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.submit-btn {
+    align-self: flex-start;
+    padding: 14px 30px;
+    cursor: pointer;
+}
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Navbar specific links */
+.nav-menu a {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.nav-menu a:hover::after {
     width: 100%;
+}
+
+.nav-menu a .icon {
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+/* 7. CTA Button (e.g., for Admissions link) */
+.nav-menu a.cta {
+    background-color: var(--color-primary);
+    color: var(--color-card);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 600;
+    margin-left: 8px;
+    border: none;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 6px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.nav-menu a.cta::after {
+    display: none;
+}
+
+.nav-menu a.cta:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-card);
 }
 
 /* Homepage Hero Section */
@@ -226,7 +466,7 @@ a.cta:hover {
     background-repeat: no-repeat;
     z-index: -2;
     background-color: var(--color-primary);
-    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.7), rgba(var(--color-primary-rgb), 0.7));
+    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.8), rgba(var(--color-primary-rgb), 0.8));
 }
 
 .hero-overlay {
@@ -279,17 +519,18 @@ a.cta:hover {
 /* Primary Button */
 .btn-primary {
     background-color: var(--color-primary);
-    color: var(--color-card);
+    color: var(--color-background);
     padding: 14px 28px;
     border-radius: var(--border-radius-button);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-base);
-    border: 2px solid transparent;
+    border: 2px solid var(--color-primary);
 }
 
 .btn-primary:hover {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
     transform: translateY(-2px);
     text-decoration: none;
 }
@@ -297,17 +538,17 @@ a.cta:hover {
 /* Secondary Button */
 .btn-secondary {
     background-color: transparent;
-    color: var(--color-card);
+    color: var(--color-primary);
     padding: 14px 28px;
     border-radius: var(--border-radius-button);
     text-decoration: none;
     font-weight: 600;
-    border: 2px solid var(--color-card);
+    border: 2px solid var(--color-primary);
     transition: var(--transition-base);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
     transform: translateY(-2px);
     text-decoration: none;
 }
@@ -880,11 +1121,149 @@ a.cta:hover {
     text-decoration: none;
 }
 
-/* Footer branding update - specific styles */
-footer .developer-credit p:last-child {
-    font-size: 0.85em;
-    color: var(--color-text-muted);
-    opacity: 0.7; /* Make it subtle */
+/* =============================== */
+/* Footer Specific Styles */
+/* =============================== */
+
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-card);
+    padding: 0;
+    font-size: 0.95rem;
+}
+
+.footer-top {
+    padding: 70px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 1.3fr;
+    gap: 60px;
+}
+
+/* Footer Columns */
+.footer-col h3 {
+    color: var(--color-card);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+/* Brand Column */
+.footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    height: 60px;
+    filter: brightness(0) invert(1); /* Make logo white for footer background */
+    width: auto;
+}
+
+.footer-motto {
+    font-style: italic;
+    opacity: 0.9;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.footer-description {
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 340px;
+}
+
+/* Links Column */
+.links-wrapper {
+    display: flex;
+    gap: 50px;
+}
+
+.links-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.links-col ul li {
+    margin-bottom: 15px;
+}
+
+.links-col ul li a {
+    color: var(--color-card);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.links-col ul li a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+    padding-left: 5px;
+}
+
+/* Contact Column */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-links p, .contact-links a {
+    color: var(--color-card);
+    opacity: 0.8;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+}
+
+.contact-links a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+    padding: 30px 0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-card);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.developer-credit {
+    font-weight: 500;
 }
 
 /* Small Fix for inner-page-shell padding top */
@@ -1452,4 +1831,99 @@ footer .developer-credit p:last-child {
     font-size: 0.85em;
     color: var(--color-text-muted);
     opacity: 0.7;
+}
+
+/* =============================== */
+/* Faculty Page Specific Sections */
+/* =============================== */
+
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.faculty-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition-base);
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+    border-color: var(--color-accent);
+}
+
+.faculty-image-container {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
+}
+
+.faculty-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.faculty-info {
+    flex-grow: 1;
+}
+
+.faculty-info .faculty-name {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.faculty-info .faculty-subject {
+    color: var(--color-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    opacity: 0.9;
+}
+
+.faculty-info .faculty-experience {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.section-title.clean-title {
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    display: block;
+    text-align: center;
+}
+
+.section-title.clean-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
 }

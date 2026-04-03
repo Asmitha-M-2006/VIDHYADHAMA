@@ -21,6 +21,18 @@
     h3 { font-size: 1.5em; }
 
     /* Nav bar Tablet/Mobile adjustments */
+    .nav-container {
+        height: 68px;
+    }
+
+    .nav-brand .brand-logo {
+        height: 46px;
+    }
+
+    .nav-brand .brand-text {
+        font-size: 1.25rem;
+    }
+
     .navbar .nav-menu {
         display: none; /* Hide desktop menu */
     }
@@ -54,17 +66,23 @@
     }
 
     /* Footer adjustments */
-    footer .container {
-        flex-direction: column;
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    .footer-col.brand-col {
+        grid-column: span 2;
         text-align: center;
-        gap: 30px;
     }
-    footer .footer-section {
-        flex-basis: 100%;
-        margin-bottom: 0;
+    .footer-logo img {
+        margin: 0 auto;
     }
-    footer .footer-section ul {
-        display: inline-block; /* For centering list items */
+    .footer-description {
+        max-width: 100%;
+    }
+    .footer-col h3::after {
+        left: 0;
+        transform: none;
     }
 
     /* Internal Page Hero Small */
@@ -203,6 +221,12 @@
         padding: 14px 30px;
         font-size: 1em;
     }
+
+    /* Faculty Page Responsive - Tablet */
+    .faculty-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }
 
 /* Mobile (max-width: 767px) */
@@ -222,41 +246,115 @@
 
     /* Navbar Mobile Specifics */
     .navbar {
-        padding: 10px 0;
-        background-color: var(--color-light-ivory);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        background-color: var(--color-card);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
-    .navbar .nav-logo img {
-        height: 35px;
+
+    .nav-container {
+        height: 64px;
+        padding: 0 15px;
     }
+
+    .nav-brand .brand-logo {
+        height: 40px;
+    }
+
+    .nav-brand .brand-text {
+        font-size: 1.15rem;
+    }
+
     .navbar .nav-menu {
+        display: flex; /* Restore flex for mobile menu */
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         flex-direction: column;
-        background-color: var(--color-light-ivory);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        border-top: 1px solid var(--color-border-light);
+        background-color: var(--color-card);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        border-top: 1px solid rgba(15, 23, 42, 0.05);
         padding: 10px 0;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
         transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        gap: 0; /* Links stack vertically without gap */
     }
+
     .navbar .nav-menu.is-open {
         visibility: visible;
         opacity: 1;
         pointer-events: auto;
     }
+
     .navbar .nav-menu a {
         padding: 12px 20px;
+        font-size: 0.95rem;
+        font-weight: 600;
         text-align: left;
-        border-bottom: 1px solid var(--color-off-white);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.05);
         width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
+
+    /* Remove underline indicators on mobile menu for cleaner look */
+    .navbar .nav-menu a::after {
+        display: none;
+    }
+
+    .navbar .nav-menu a.active {
+        background-color: rgba(15, 23, 42, 0.02);
+    }
+
+    .navbar .nav-menu a[href="admissions.html"] {
+        background-color: rgba(15, 23, 42, 0.03);
+    }
+
     .navbar .nav-menu a:last-child {
         border-bottom: none;
+    }
+
+    /* Enquiry Section Responsive */
+    .enquiry-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .enquiry-form-block {
+        padding: 25px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer adjustments Mobile */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .footer-col.brand-col {
+        grid-column: span 1;
+    }
+    .links-wrapper {
+        justify-content: center;
+        gap: 30px;
+    }
+    .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .contact-links p, .contact-links a {
+        justify-content: center;
+    }
+    .bottom-flex {
+        flex-direction: column;
+        gap: 10px;
     }
 
     /* Homepage Hero */
@@ -441,6 +539,28 @@
     .strong-cta-section .btn-cta-large {
         padding: 10px 20px;
         font-size: 0.9em;
+    }
+
+    /* Faculty Page Responsive - Mobile */
+    .faculty-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .faculty-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .faculty-image-container {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 20px;
+    }
+
+    .faculty-info .faculty-name {
+        font-size: 1.2rem;
     }
 }
 
