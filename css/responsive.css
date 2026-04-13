@@ -273,7 +273,7 @@
         flex-direction: column;
         background-color: var(--color-card);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-        border-top: 1px solid rgba(15, 23, 42, 0.05);
+        border-top: 1px solid rgba(18, 25, 45, 0.05);
         padding: 10px 0;
         visibility: hidden;
         opacity: 0;
@@ -293,7 +293,7 @@
         font-size: 0.95rem;
         font-weight: 600;
         text-align: left;
-        border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        border-bottom: 1px solid rgba(18, 25, 45, 0.05);
         width: 100%;
         display: flex;
         justify-content: flex-start;
@@ -307,11 +307,11 @@
     }
 
     .navbar .nav-menu a.active {
-        background-color: rgba(15, 23, 42, 0.02);
+        background-color: rgba(18, 25, 45, 0.02);
     }
 
     .navbar .nav-menu a[href="admissions.html"] {
-        background-color: rgba(15, 23, 42, 0.03);
+        background-color: rgba(18, 25, 45, 0.03);
     }
 
     .navbar .nav-menu a:last-child {

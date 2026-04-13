@@ -16,9 +16,10 @@ img {
 
 /* Color Variables */
 :root {
-    --color-primary: #0f172a; /* Deep Academic Navy */
-    --color-primary-dark: #050811; 
-    --color-primary-rgb: 15, 23, 42;
+    --color-primary: #12192D;
+    --color-primary-dark: #0e1424;
+    --color-primary-light: #1a2238;
+    --color-primary-rgb: 18, 25, 45;
     --color-accent: #9a7b4f; /* Muted Bronze / Formal Gold */
     --color-accent-hover: #866a43;
     --color-accent-soft: #dcd0b9; 
@@ -29,7 +30,7 @@ img {
     --color-border: #e2e8f0;
     --color-border-warm: #e8e2d5;
 
-    --color-text: #0f172a; /* Main headings/text */
+    --color-text: #12192D; /* Main headings/text */
     --color-text-muted: #475569; /* Refined grey for secondary text */
     --color-text-on-dark: #f8fafc;
 
@@ -385,7 +386,7 @@ a:hover {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
 }
 
 .submit-btn {
@@ -477,7 +478,7 @@ a:hover {
     justify-content: center;
     color: #ffffff;
     text-align: center;
-    background-color: var(--color-primary-dark);
+    background: linear-gradient(135deg, #12192D, #1a2238);
 }
 
 .hero-background-image {
@@ -490,7 +491,7 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
-    opacity: 0.6; /* Let more background color through */
+    opacity: 0.4; /* Slightly lower opacity to let gradient show through more */
 }
 
 .hero-overlay {
@@ -499,11 +500,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-        circle at center,
-        rgba(var(--color-primary-rgb), 0.85) 0%,
-        rgba(var(--color-primary-rgb), 0.98) 100%
-    );
+    background: linear-gradient(135deg, rgba(18, 25, 45, 0.85), rgba(26, 34, 56, 0.95));
     z-index: -1;
 }
 
@@ -651,26 +648,46 @@ a:hover {
 }
 
 /* Page Hero Small (for internal pages like About) */
-.page-hero-small {
-    background-color: var(--color-background);
-    padding: var(--spacing-section-desktop) 0;
+.page-hero-small, .page-hero {
+    position: relative;
+    background: linear-gradient(135deg, #12192D, #1a2238);
+    padding: 120px 0;
     text-align: center;
-    color: var(--color-primary);
-    border-bottom: 1px solid var(--color-border);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.page-hero-small::before, .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(18, 25, 45, 0.4), rgba(26, 34, 56, 0.6));
+    z-index: 1;
+}
+
+.page-hero-small .container {
+    position: relative;
+    z-index: 2;
 }
 
 .page-hero-small .page-title {
-    font-size: 2.8em;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
 }
 
 .page-hero-small .page-subtext {
-    font-size: 1.1em;
+    font-size: 1.25em;
     max-width: 700px;
     margin: 0 auto;
-    opacity: 0.8;
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85); /* Slightly brighter for better clarity */
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 /* Section Padding - consistent vertical spacing for main content sections */
@@ -684,45 +701,80 @@ a:hover {
 /* ============================ */
 
 /* About Content Section */
+.about-content-section .container {
+    max-width: 750px;
+}
+
 .about-content-section p {
-    margin-bottom: 20px;
-    line-height: 1.7;
-    font-size: 1.05em;
+    margin-bottom: 25px;
+    line-height: 1.8;
+    font-size: 1.15em;
+    color: var(--color-text);
+}
+
+.about-content-section p strong, 
+.about-content-section p b {
     color: var(--color-primary);
+    font-weight: 600;
 }
 
 /* Vision & Mission Section */
 .vision-mission-section {
-    background-color: var(--color-background);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-warm);
 }
 
 .vision-mission-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
 }
 
 .vision-mission-cards .card {
-    flex: 1;
-    padding: 35px;
-    text-align: left;
-    border: 1px solid var(--color-border); /* Override general card border for this specific case */
+    padding: 50px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--color-border-warm);
+    background-color: #ffffff;
+    transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.vision-mission-cards .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(var(--color-primary-rgb), 0.08);
 }
 
 .vision-mission-cards .card h3 {
-    font-size: 1.8em;
+    font-size: 2.2em;
     color: var(--color-primary);
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    position: relative;
+    border-bottom: none;
 }
 
-.vision-mission-cards .card p, .vision-mission-cards .card ul {
-    font-size: 1em;
+.vision-mission-cards .card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-accent);
+}
+
+.vision-mission-cards .card p, 
+.vision-mission-cards .card ul {
+    font-size: 1.1em;
     line-height: 1.7;
     color: var(--color-text-muted);
+}
+
+.vision-card p {
+    font-style: italic;
+    color: var(--color-primary);
 }
 
 .vision-mission-cards .card ul {
@@ -752,69 +804,81 @@ a:hover {
 }
 
 
-/* Why Vidhyadhama Section */
-.why-vidhyadhama-section .section-title {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.why-points {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.why-card {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    padding: 30px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.why-card .icon {
-    font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 15px;
-    background-color: var(--color-background);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
-    width: 36px;
-    height: 36px;
-    stroke: var(--color-accent);
-}
-
-.why-card p {
-    font-size: 1.1em;
-    color: var(--color-primary);
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-/* Commitment Strip */
-.commitment-strip {
-    background-color: var(--color-primary);
-    padding: 40px 0;
-    color: var(--color-card);
-    font-size: 1.3em;
-    font-weight: 500;
+/* Why Vidhyadhama Section - Upgraded */
+.why-points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
     margin-top: 50px;
 }
 
-.commitment-strip .strip-text {
+.why-card-upgraded {
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition-base);
+    background: var(--color-card);
+}
+
+.why-card-upgraded:hover {
+    transform: translateY(-8px);
+}
+
+.why-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(154, 123, 79, 0.1); /* Based on --color-accent #9a7b4f */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+    transition: var(--transition-base);
+}
+
+.why-card-upgraded:hover .why-icon-wrapper {
+    background: var(--color-accent);
+}
+
+.why-card-upgraded .icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent);
     margin: 0;
+}
+
+.why-card-upgraded:hover .icon {
+    color: #ffffff;
+    stroke: #ffffff;
+}
+
+.why-card-upgraded h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.why-card-upgraded p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Commitment Strip (Blue/Navy Strip) */
+.commitment-strip {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    padding: 80px 0;
+    color: #ffffff;
+}
+
+.commitment-strip .strip-text {
+    font-size: 1.8em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.5px;
+    margin: 0;
+    font-style: italic;
 }
 /* ============================= */
 /* Academics Page Specific Sections */
@@ -1046,7 +1110,7 @@ a:hover {
     background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-soft);
-    border-top: 5px solid var(--color-blue-accent);
+    border-top: 5px solid var(--color-primary);
     transition: var(--transition-base);
 }
 
@@ -1143,7 +1207,7 @@ a:hover {
     background-color: var(--color-card);
     border-radius: var(--border-radius-base);
     box-shadow: var(--shadow-subtle);
-    border-bottom: 3px solid var(--color-blue-accent);
+    border-bottom: 3px solid var(--color-primary);
 }
 
 .date-item h3 {
@@ -1233,15 +1297,13 @@ a:hover {
 }
 
 /* Brand Column */
-.footer-logo {
-    margin-bottom: 25px;
-}
-
-.footer-logo img {
-    height: 60px;
-    filter: brightness(0) invert(1); /* Make logo white for footer background */
-    width: auto;
-    opacity: 0.95;
+.footer-brand-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .footer-motto {
@@ -1250,6 +1312,7 @@ a:hover {
     font-weight: 500;
     margin-bottom: 15px;
     color: var(--color-accent-soft);
+    font-size: 1rem;
 }
 
 .footer-description {
@@ -1257,6 +1320,7 @@ a:hover {
     opacity: 0.8;
     max-width: 340px;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
 }
 
 /* Links Column */
@@ -1336,660 +1400,4 @@ a:hover {
 .inner-page-shell {
     padding-top: var(--spacing-section-desktop);
     padding-bottom: var(--spacing-section-desktop);
-}
-/* This is a temporary addition from before. Will remove or combine.*/
-/* ======================== */
-/* Internal Page Base Styles */
-/* ======================== */
-
-/* General page shell for internal pages */
-.inner-page-shell {
-    padding-top: 20px; /* Space below navbar */
-    padding-bottom: 50px; /* Space before footer */
-}
-
-/* Page Hero Small (for internal pages like About) */
-.page-hero-small {
-    background-color: var(--color-off-white);
-    background-image: linear-gradient(180deg, #FDFDFD, #F0F0F0);
-    padding: 60px 0;
-    text-align: center;
-    color: var(--color-primary);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.page-hero-small .page-title {
-    font-size: 2.8em;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.page-hero-small .page-subtext {
-    font-size: 1.1em;
-    max-width: 700px;
-    margin: 0 auto;
-    opacity: 0.8;
-    line-height: 1.5;
-}
-
-/* Section Padding - consistent vertical spacing for main content sections */
-.section-padding {
-    padding: 70px 0;
-}
-
-/* Content Max Width - for readability of long texts */
-.content-max-width {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* ============================ */
-/* About Page Specific Sections */
-/* ============================ */
-
-/* About Content Section */
-.about-content-section p {
-    margin-bottom: 20px;
-    line-height: 1.7;
-    font-size: 1.05em;
-    color: var(--color-primary);
-}
-
-/* Vision & Mission Section */
-.vision-mission-section {
-    background-color: var(--color-background);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.vision-mission-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.vision-mission-cards .card {
-    flex: 1;
-    padding: 35px;
-    text-align: left;
-    border: 1px solid var(--color-border); /* Override general card border for this specific case */
-}
-
-.vision-mission-cards .card h3 {
-    font-size: 1.8em;
-    color: var(--color-primary);
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 10px;
-}
-
-.vision-mission-cards .card p, .vision-mission-cards .card ul {
-    font-size: 1em;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-}
-
-.vision-mission-cards .card ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.vision-mission-cards .card ul li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 30px;
-    color: var(--color-primary);
-}
-
-.vision-mission-cards .card ul li::before {
-    /* content: '✓'; */ /* Replaced with SVG in HTML */
-    content: ''; /* Remove emoji content */
-    display: inline-block;
-    width: 20px; /* Adjust size of SVG icon */
-    height: 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    left: 0;
-    top: 0.2em; /* Adjust vertical alignment */
-}
-
-
-/* Why Vidhyadhama Section */
-.why-vidhyadhama-section .section-title {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.why-points {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.why-card {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    padding: 30px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.why-card .icon {
-    font-size: 2.5em; /* This is for emoji size, will be overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 15px;
-    background-color: var(--color-background);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.why-card .icon .lucide-icon svg { /* Specific styling for SVG inside why-card icon wrapper */
-    width: 36px;
-    height: 36px;
-    stroke: var(--color-accent);
-}
-
-.why-card p {
-    font-size: 1.1em;
-    color: var(--color-primary);
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-/* Commitment Strip */
-.commitment-strip {
-    background-color: var(--color-primary);
-    padding: 40px 0;
-    color: var(--color-card);
-    font-size: 1.3em;
-    font-weight: 500;
-    margin-top: 50px;
-}
-
-.commitment-strip .strip-text {
-    margin: 0;
-}
-/* ============================= */
-/* Academics Page Specific Sections */
-/* ============================= */
-
-/* Academics Streams Section */
-.academics-streams-section .section-title {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.streams-layout {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.stream-card {
-    flex: 1;
-    min-width: 300px;
-    max-width: 450px;
-    padding: 35px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-.stream-card h3 {
-    font-size: 1.8em;
-    color: var(--color-accent);
-    margin-bottom: 25px;
-    text-align: center;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 15px;
-}
-
-.stream-combinations {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.combination-item {
-    background-color: var(--color-off-white);
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid var(--color-border-light);
-}
-
-.combination-item h4 {
-    font-size: 1.2em;
-    color: var(--color-primary);
-    margin-bottom: 5px;
-}
-
-.combination-item p {
-    font-size: 0.95em;
-    color: var(--color-text-muted);
-    line-height: 1.4;
-}
-
-/* Academic System Section */
-.academic-system-section .section-title {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.info-cards-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.info-card {
-    flex: 1;
-    min-width: 280px;
-    max-width: 380px;
-    padding: 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.info-card .icon {
-    font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 20px;
-}
-.info-card .icon .lucide-icon svg { /* Specific styling for SVG inside info-card icon wrapper */
-    width: 40px;
-    height: 40px;
-    stroke: var(--color-accent);
-}
-
-
-.info-card h3 {
-    font-size: 1.6em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.info-card p {
-    font-size: 1em;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-/* Coaching & Support Section */
-.coaching-support-section .section-title {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.support-cards-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.support-card {
-    flex: 1;
-    min-width: 280px;
-    max-width: 380px;
-    padding: 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.support-card .icon {
-    font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 20px;
-}
-.support-card .icon .lucide-icon svg { /* Specific styling for SVG inside support-card icon wrapper */
-    width: 40px;
-    height: 40px;
-    stroke: var(--color-accent);
-}
-
-.support-card h3 {
-    font-size: 1.6em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.support-card p {
-    font-size: 1em;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-/* =============================== */
-/* Admissions Page Specific Sections */
-/* =============================== */
-
-/* Page Hero actions (for CTA button) */
-.page-hero-actions {
-    margin-top: 25px;
-}
-
-/* Eligibility Section - Upgraded */
-.eligibility-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.eligibility-card {
-    text-align: center;
-    padding: 30px;
-    background-color: var(--color-card);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-soft);
-    border-top: 4px solid var(--color-accent); /* Blue accent bar */
-}
-
-.eligibility-card .eligibility-icon {
-    font-size: 2.5em; /* Overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 15px;
-    display: block;
-}
-.eligibility-card .eligibility-icon svg { /* Specific styling for SVG inside eligibility-card icon wrapper */
-    width: 36px;
-    height: 36px;
-    stroke: var(--color-accent);
-}
-
-.eligibility-card h3 {
-    font-size: 1.4em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.eligibility-card p {
-    font-size: 0.95em;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-/* Admission Process Section - Upgraded to Visual Steps */
-.visual-process-steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    justify-content: center;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.process-step-card {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: var(--color-card);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-soft);
-    border-top: 5px solid var(--color-blue-accent);
-    transition: var(--transition-base);
-}
-
-.process-step-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-prominent);
-}
-
-.process-step-card .step-icon {
-    font-size: 3em; /* Overridden by SVG styling */
-    color: var(--color-accent);
-    margin-bottom: 10px;
-    display: block;
-}
-.process-step-card .step-icon svg { /* Specific styling for SVG inside process-step-card icon wrapper */
-    width: 40px;
-    height: 40px;
-    stroke: var(--color-accent);
-}
-
-.process-step-card .step-number-visual {
-    font-size: 0.9em;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    margin-bottom: 10px;
-    display: block;
-}
-
-.process-step-card h3 {
-    font-size: 1.5em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.process-step-card p {
-    font-size: 0.95em;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-/* Required Documents Section - Upgraded Checklist UI */
-.docs-checklist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.doc-item {
-    display: flex;
-    align-items: center;
-    background-color: var(--color-card);
-    padding: 15px 20px;
-    border-radius: var(--border-radius-button);
-    box-shadow: 0 2px 5px rgba(var(--color-primary-rgb), 0.03);
-    border-left: 4px solid var(--color-primary); /* Navy accent bar */
-    font-size: 1em;
-    color: var(--color-primary);
-    line-height: 1.5;
-    text-align: left;
-}
-
-.doc-item .icon-checkmark {
-    color: var(--color-accent);
-    font-size: 1.2em; /* Overridden by SVG styling */
-    margin-right: 15px;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-.doc-item .icon-checkmark svg { /* Specific styling for SVG inside doc-item icon wrapper */
-    width: 28px;
-    height: 28px;
-    stroke: var(--color-accent);
-}
-
-
-/* Important Dates Section */
-.dates-info-grid {
-    display: flex; /* Changed from grid to flex for simpler stacking */
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.date-item {
-    flex: 1;
-    min-width: 280px;
-    max-width: 380px;
-    text-align: center;
-    padding: 25px;
-    background-color: var(--color-card);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-subtle);
-    border-bottom: 3px solid var(--color-blue-accent);
-}
-
-.date-item h3 {
-    font-size: 1.4em;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-}
-
-.date-item p {
-    font-size: 1em;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-/* Final CTA Section - Upgraded */
-.strong-cta-section {
-    background-color: var(--color-primary);
-    padding: var(--spacing-section-desktop) 0;
-    color: var(--color-card);
-    text-align: center;
-    margin-top: var(--spacing-section-desktop);
-}
-
-.strong-cta-section .cta-heading {
-    font-size: 2.8em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    line-height: 1.2;
-}
-
-.strong-cta-section .btn-cta-large {
-    padding: 16px 35px;
-    font-size: 1.1em;
-    border-radius: var(--border-radius-base);
-    border: 2px solid var(--color-card);
-    transition: var(--transition-base);
-}
-
-.strong-cta-section .btn-cta-large:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    text-decoration: none;
-}
-
-/* Footer branding update - specific styles */
-footer .developer-credit p:last-child {
-    font-size: 0.85em;
-    color: var(--color-text-muted);
-    opacity: 0.7;
-}
-
-/* =============================== */
-/* Faculty Page Specific Sections */
-/* =============================== */
-
-.faculty-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.faculty-card {
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    transition: var(--transition-base);
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.faculty-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-    border-color: var(--color-accent);
-}
-
-.faculty-image-container {
-    flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: var(--color-background);
-    border: 2px solid var(--color-border);
-}
-
-.faculty-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.faculty-info {
-    flex-grow: 1;
-}
-
-.faculty-info .faculty-name {
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    margin-bottom: 6px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.faculty-info .faculty-subject {
-    color: var(--color-secondary);
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 6px;
-    opacity: 0.9;
-}
-
-.faculty-info .faculty-experience {
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
-    font-weight: 400;
-    margin-bottom: 0;
-}
-
-.section-title.clean-title {
-    font-size: 2.2rem;
-    position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 50px;
-    display: block;
-    text-align: center;
-}
-
-.section-title.clean-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--color-accent);
-    border-radius: 2px;
 }
