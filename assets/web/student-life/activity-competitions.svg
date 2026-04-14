@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Competition placeholder">
+  <rect width="640" height="420" fill="#f9f7f2"/>
+  <path d="M252 104h136v70c0 56-28 96-68 116-40-20-68-60-68-116v-70z" fill="#12192D"/>
+  <path d="M206 128h46v42c0 42-26 70-72 78v-46c20-8 26-20 26-42v-32z" fill="#9a7b4f"/>
+  <path d="M388 128h46v32c0 22 6 34 26 42v46c-46-8-72-36-72-78v-42z" fill="#9a7b4f"/>
+  <rect x="292" y="290" width="56" height="48" fill="#dcd0b9"/>
+  <rect x="236" y="338" width="168" height="18" fill="#12192D"/>
+</svg>

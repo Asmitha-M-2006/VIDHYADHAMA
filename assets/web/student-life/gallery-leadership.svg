@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Leadership and clubs placeholder">
+  <rect width="640" height="420" fill="#f9f7f2"/>
+  <circle cx="320" cy="140" r="58" fill="#9a7b4f"/>
+  <path d="M214 338c16-88 58-134 106-134s90 46 106 134" fill="#12192D"/>
+  <circle cx="180" cy="186" r="38" fill="#dcd0b9"/>
+  <path d="M112 338c12-70 40-106 68-106s56 36 68 106" fill="#dcd0b9"/>
+  <circle cx="460" cy="186" r="38" fill="#dcd0b9"/>
+  <path d="M392 338c12-70 40-106 68-106s56 36 68 106" fill="#dcd0b9"/>
+</svg>

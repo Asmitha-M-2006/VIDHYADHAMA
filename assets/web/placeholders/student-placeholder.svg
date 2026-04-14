@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Student profile placeholder">
+  <rect width="400" height="400" fill="#f9f7f2"/>
+  <path d="M72 116 200 62l128 54-128 54L72 116z" fill="#12192D"/>
+  <path d="M126 154v54c0 34 33 62 74 62s74-28 74-62v-54" fill="#dcd0b9"/>
+  <circle cx="200" cy="174" r="48" fill="#e8e2d5"/>
+  <path d="M82 360c18-70 62-108 118-108s100 38 118 108" fill="#12192D"/>
+  <path d="M106 116v80" stroke="#9a7b4f" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="106" cy="210" r="12" fill="#9a7b4f"/>
+</svg>

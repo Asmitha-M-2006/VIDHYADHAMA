@@ -50,22 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     navMenu.classList.toggle('is-open');
                 });
 
-                // Close menu when a nav link is clicked (for mobile UX)
+                // Close menu when a nav link is clicked (for tablet/mobile UX)
                 navMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
-                        // Only close if the menu is actually open and it's a mobile view
-                        if (navMenu.classList.contains('is-open') && window.innerWidth <= 767) {
+                        // Only close if the menu is actually open and it's a tablet/mobile view
+                        if (navMenu.classList.contains('is-open') && window.innerWidth <= 1023) {
                             hamburger.setAttribute('aria-expanded', 'false');
                             navMenu.classList.remove('is-open');
                         }
                     });
                 });
 
-                // Reset menu state on resize (desktop breakpoint is > 767px)
-                let isMobileView = window.innerWidth <= 767;
+                // Reset menu state on resize (desktop breakpoint is > 1023px)
+                let isMobileView = window.innerWidth <= 1023;
 
                 window.addEventListener('resize', () => {
-                    const newIsMobileView = window.innerWidth <= 767;
+                    const newIsMobileView = window.innerWidth <= 1023;
                     if (isMobileView && !newIsMobileView) { // Transitioned from mobile to desktop
                         if (navMenu.classList.contains('is-open')) {
                             hamburger.setAttribute('aria-expanded', 'false');

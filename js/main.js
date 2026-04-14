@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `Message / Enquiry:\n${message}`
             );
             
-            window.location.href = `mailto:achuth.s@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:info@vidhyadama?subject=${subject}&body=${body}`;
         });
     }
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `Message:\n${message}`
             );
             
-            window.location.href = `mailto:achuth.s@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:info@vidhyadama?subject=${subject}&body=${body}`;
         });
     }
 });

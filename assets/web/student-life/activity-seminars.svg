@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Seminar placeholder">
+  <rect width="640" height="420" fill="#f9f7f2"/>
+  <rect x="92" y="86" width="456" height="248" rx="8" fill="#12192D"/>
+  <rect x="132" y="126" width="232" height="28" fill="#dcd0b9"/>
+  <rect x="132" y="178" width="176" height="18" fill="#9a7b4f"/>
+  <rect x="132" y="216" width="252" height="18" fill="#9a7b4f"/>
+  <circle cx="454" cy="198" r="44" fill="#dcd0b9"/>
+  <path d="M388 306c14-52 40-78 66-78s52 26 66 78" fill="#dcd0b9"/>
+</svg>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results | Vidhyadhama</title>
+    <title>Results &amp; Achievements | Vidhyadhama</title>
     <link rel="icon" href="/assets/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
@@ -12,18 +12,156 @@
 
     <div id="navbar"></div>
 
-    <main class="inner-page-shell">
-      <section class="page-hero">
+    <main class="inner-page-shell results-page">
+      <section class="page-hero results-hero">
         <div class="container">
-          <h1>Results</h1>
-          <p>More content coming soon.</p>
+          <div class="results-hero-content reveal-on-scroll">
+            <h1>Results &amp; Achievements</h1>
+            <p>Celebrating academic excellence, state ranks, and competitive exam success</p>
+          </div>
+          <div class="results-hero-stats" aria-label="Results highlights">
+            <article class="results-stat-card reveal-on-scroll">
+              <span>Board Exam Excellence</span>
+            </article>
+            <article class="results-stat-card reveal-on-scroll">
+              <span>State Rank Holders</span>
+            </article>
+            <article class="results-stat-card reveal-on-scroll">
+              <span>Competitive Exam Success</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-showcase-section section-padding">
+        <div class="container">
+          <div class="section-heading-block reveal-on-scroll">
+            <p class="section-kicker">Featured Highlights</p>
+            <h2 class="section-title text-center">Academic Excellence at a Glance</h2>
+            <p>Selected achievers across board examinations, state ranks, competitive entrance tests, and professional milestones.</p>
+          </div>
+          <div class="results-card-grid results-featured-grid" data-results-section="featured"></div>
+        </div>
+      </section>
+
+      <section class="board-results-section section-padding bg-light-ivory">
+        <div class="container">
+          <div class="section-heading-block reveal-on-scroll">
+            <p class="section-kicker">Board Exam Achievements</p>
+            <h2 class="section-title text-center">Structured Board Results</h2>
+            <p>Highlights are grouped by achievement type so families can quickly understand performance strength.</p>
+          </div>
+
+          <div class="results-subsection reveal-on-scroll">
+            <div class="results-subsection-header">
+              <h3>Top Board Achievers</h3>
+              <p>High-scoring II PUC performers across streams.</p>
+            </div>
+            <div class="results-card-grid results-standard-grid" data-results-section="top-board"></div>
+          </div>
+
+          <div class="results-subsection reveal-on-scroll">
+            <div class="results-subsection-header">
+              <h3>State Rank Holders</h3>
+              <p>Recognized state-level ranks from board results.</p>
+            </div>
+            <div class="results-card-grid results-rank-grid" data-results-section="state-rank"></div>
+          </div>
+
+          <div class="results-two-column">
+            <div class="results-subsection reveal-on-scroll">
+              <div class="results-subsection-header">
+                <h3>Science Distinctions</h3>
+                <p>Selected Science stream distinctions.</p>
+              </div>
+              <div class="results-card-grid results-compact-grid" data-results-section="science"></div>
+            </div>
+
+            <div class="results-subsection reveal-on-scroll">
+              <div class="results-subsection-header">
+                <h3>Commerce Distinctions</h3>
+                <p>Selected Commerce stream distinctions.</p>
+              </div>
+              <div class="results-card-grid results-compact-grid" data-results-section="commerce"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="competitive-results-section section-padding">
+        <div class="container">
+          <div class="section-heading-block reveal-on-scroll">
+            <p class="section-kicker">Competitive Exam Achievements</p>
+            <h2 class="section-title text-center">Beyond Board Results</h2>
+            <p>Entrance and professional examination success presented as structured outcomes, not publicity posters.</p>
+          </div>
+
+          <div class="competitive-groups">
+            <article class="competitive-group reveal-on-scroll">
+              <div class="competitive-group-heading">
+                <span class="competitive-icon" data-lucide="stethoscope"></span>
+                <div>
+                  <h3>NEET Achievers</h3>
+                  <p>Medical and dental admissions track.</p>
+                </div>
+              </div>
+              <div class="results-card-grid results-competitive-grid" data-results-section="neet"></div>
+            </article>
+
+            <article class="competitive-group reveal-on-scroll">
+              <div class="competitive-group-heading">
+                <span class="competitive-icon" data-lucide="cpu"></span>
+                <div>
+                  <h3>KCET Achievers</h3>
+                  <p>Engineering entrance performance.</p>
+                </div>
+              </div>
+              <div class="results-card-grid results-competitive-grid" data-results-section="kcet"></div>
+            </article>
+
+            <article class="competitive-group reveal-on-scroll">
+              <div class="competitive-group-heading">
+                <span class="competitive-icon" data-lucide="briefcase-business"></span>
+                <div>
+                  <h3>Professional Achievements</h3>
+                  <p>Commerce and professional course milestones.</p>
+                </div>
+              </div>
+              <div class="results-card-grid results-competitive-grid" data-results-section="professional"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-archive-section section-padding bg-light-ivory">
+        <div class="container">
+          <div class="section-heading-block reveal-on-scroll">
+            <p class="section-kicker">Archive</p>
+            <h2 class="section-title text-center">Full Results Archive</h2>
+            <p>Additional achievers are kept secondary so the page remains readable while still allowing deeper review.</p>
+          </div>
+          <div class="results-archive-preview reveal-on-scroll">
+            <p>Explore more board, competitive exam, and professional achievement records.</p>
+            <button class="btn btn-primary results-archive-toggle" type="button" aria-expanded="false" aria-controls="resultsArchiveGrid">
+              View Full Results Archive
+            </button>
+          </div>
+          <div class="results-archive-panel" id="resultsArchiveGrid" hidden>
+            <div class="results-card-grid results-standard-grid" data-results-section="archive"></div>
+          </div>
         </div>
       </section>
     </main>
 
+    <div class="results-lightbox" id="resultsLightbox" aria-hidden="true" role="dialog" aria-label="Result poster preview">
+      <button class="results-lightbox-close" type="button" aria-label="Close poster preview">&times;</button>
+      <img src="" alt="">
+    </div>
+
     <div id="footer"></div>
 
     <script src="/js/partials.js"></script>
+    <script src="/js/results.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </body>
 </html>

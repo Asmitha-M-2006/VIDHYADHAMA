@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Male profile placeholder">
+  <rect width="400" height="400" fill="#f9f7f2"/>
+  <circle cx="200" cy="146" r="70" fill="#dcd0b9"/>
+  <path d="M80 360c16-82 64-126 120-126s104 44 120 126" fill="#12192D"/>
+  <path d="M80 360c16-82 64-126 120-126s104 44 120 126" fill="#12192D" opacity=".88"/>
+  <circle cx="200" cy="146" r="46" fill="#f9f7f2" opacity=".18"/>
+  <path d="M126 322h148" stroke="#9a7b4f" stroke-width="10" stroke-linecap="round"/>
+</svg>

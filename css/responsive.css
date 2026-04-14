@@ -4,11 +4,85 @@
 
 /* General Responsive Adjustments */
 
+/* Large Desktop (min-width: 1440px) */
+@media (min-width: 1440px) {
+    .homepage-hero-shell .college-name {
+        font-size: 3.56em;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 106px;
+        height: 106px;
+        margin-bottom: 14px;
+    }
+
+    .page-hero-small .page-title,
+    .page-hero h1 {
+        font-size: 3.18em;
+    }
+}
+
+/* Standard Desktop / Laptop (max-width: 1199px) */
+@media (max-width: 1199px) {
+    :root {
+        --spacing-card-gap: 24px;
+    }
+
+    .container,
+    .nav-container {
+        max-width: 1040px;
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .nav-menu {
+        gap: 18px;
+    }
+
+    .nav-menu a {
+        font-size: 0.87rem;
+    }
+
+    .brand-text {
+        font-size: 1.06rem;
+        letter-spacing: 0.09em;
+    }
+
+    .brand-logo {
+        height: 42px;
+    }
+
+    .homepage-hero-shell .college-name {
+        font-size: 3.08em;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 94px;
+        height: 94px;
+        margin-bottom: 13px;
+    }
+
+    .student-life-area-card {
+        padding: 30px 22px;
+    }
+
+    .student-life-area-card h3 {
+        font-size: 1.15rem;
+    }
+}
+
 /* Tablet and Smaller (max-width: 1023px) */
 @media (max-width: 1023px) {
+    :root {
+        --spacing-inner-page-top: 0;
+        --spacing-inner-page-bottom: var(--spacing-section-tablet);
+        --spacing-title-content: 28px;
+        --spacing-card-gap: 24px;
+    }
+
     .container {
-        max-width: 720px;
-        padding: 0 15px;
+        max-width: 900px;
+        padding: 0 24px;
     }
 
     body {
@@ -22,47 +96,116 @@
 
     /* Nav bar Tablet/Mobile adjustments */
     .nav-container {
-        height: 68px;
+        height: 64px;
+        padding: 0 24px;
     }
 
     .nav-brand .brand-logo {
-        height: 46px;
+        height: 44px;
     }
 
     .nav-brand .brand-text {
-        font-size: 1.25rem;
+        font-size: 1rem;
+        letter-spacing: 0.07em;
     }
 
     .navbar .nav-menu {
-        display: none; /* Hide desktop menu */
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        background-color: var(--color-card);
+        box-shadow: 0 12px 24px rgba(var(--color-primary-rgb), 0.1);
+        border-top: 1px solid rgba(var(--color-primary-rgb), 0.08);
+        padding: 8px 24px 12px;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: visibility 0.25s ease, opacity 0.25s ease;
+        gap: 0;
     }
 
     .navbar .hamburger {
         display: block; /* Show hamburger button */
     }
 
+    .navbar .nav-menu.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .navbar .nav-menu a {
+        width: 100%;
+        justify-content: flex-start;
+        min-height: 46px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.06);
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .navbar .nav-menu a::after {
+        display: none;
+    }
+
+    .navbar .nav-menu a.active {
+        color: var(--color-accent);
+    }
+
+    .navbar .nav-menu a:last-child {
+        border-bottom: 0;
+    }
+
     /* Homepage Hero */
     .homepage-hero-shell {
-        height: 70vh;
+        min-height: 84vh;
     }
     .homepage-hero-shell .college-name {
-        font-size: 2.8em;
+        font-size: 2.5em;
+        margin-bottom: 0;
+        line-height: 1.05;
     }
+
+    .homepage-hero-shell .hero-crest {
+        width: 84px;
+        height: 84px;
+        margin-bottom: 12px;
+    }
+
+    .homepage-hero-shell .hero-brand-lockup {
+        margin-bottom: 16px;
+    }
+
     .homepage-hero-shell .motto {
-        font-size: 1.2em;
+        font-size: 0.9em;
+        letter-spacing: 0.09em;
+        margin-bottom: 22px;
     }
     .homepage-hero-shell .supporting-line {
         font-size: 1em;
+        max-width: 600px;
+        margin-bottom: 32px;
     }
     .homepage-hero-shell .hero-actions {
-        flex-direction: column;
-        gap: 15px;
+        gap: 14px;
+        margin-bottom: 28px;
     }
     .homepage-hero-shell .btn-primary,
     .homepage-hero-shell .btn-secondary {
-        width: 70%;
         max-width: 280px;
-        padding: 12px 25px;
+        padding: 14px 26px;
+    }
+    .section-welcome {
+        padding-top: 68px;
+        padding-bottom: 72px;
+    }
+    .section-welcome .content-max-width {
+        margin-top: 28px;
     }
 
     /* Footer adjustments */
@@ -86,13 +229,13 @@
     }
 
     /* Internal Page Hero Small */
-    .page-hero-small {
-        padding: var(--spacing-section-tablet) 0;
+    .page-hero-small, .page-hero {
+        padding: 64px 0;
     }
-    .page-hero-small .page-title {
+    .page-hero-small .page-title, .page-hero h1 {
         font-size: 2.2em;
     }
-    .page-hero-small .page-subtext {
+    .page-hero-small .page-subtext, .page-hero p {
         font-size: 1em;
     }
 
@@ -103,33 +246,18 @@
 
     /* About Page Specifics - Tablet */
     .vision-mission-cards {
-        flex-direction: column; /* Stack cards vertically */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
     .vision-mission-cards .card {
         padding: 30px;
     }
     .vision-mission-cards .card h3 {
-        font-size: 1.6em;
+        font-size: 1.5em;
     }
     .why-vidhyadhama-section .section-title {
         font-size: 2em;
-        margin-bottom: 40px;
-    }
-    .why-points {
-        gap: 15px;
-    }
-    .why-card {
-        min-width: 200px;
-        max-width: 45%; /* Two cards per row */
-        padding: 25px 15px;
-    }
-    .why-card .icon .lucide-icon svg {
-        width: 30px;
-        height: 30px;
-    }
-    .why-card p {
-        font-size: 1em;
+        margin-bottom: var(--spacing-title-content);
     }
     .commitment-strip {
         padding: 30px 0;
@@ -141,29 +269,29 @@
     .academic-system-section .section-title,
     .coaching-support-section .section-title {
         font-size: 2em;
-        margin-bottom: 40px;
+        margin-bottom: var(--spacing-title-content);
     }
     .streams-layout {
-        flex-direction: column; /* Stack stream cards */
+        flex-direction: row;
         align-items: center;
-        gap: 25px;
+        gap: var(--spacing-card-gap);
     }
     .stream-card {
-        max-width: 80%; /* Wider on tablet */
+        flex: 1 1 320px;
+        max-width: none;
         min-width: unset;
         padding: 30px;
     }
     .stream-card h3 {
-        font-size: 1.5em;
+        font-size: 1.38em;
     }
     .info-cards-grid,
     .support-cards-grid {
-        gap: 25px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-card-gap);
     }
     .info-cards-grid .info-card,
     .support-cards-grid .support-card {
-        max-width: 45%; /* Two cards per row */
-        min-width: 250px;
         padding: 25px;
     }
     .info-card h3,
@@ -183,32 +311,36 @@
     }
     .eligibility-cards-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
+        gap: var(--spacing-card-gap);
     }
     .visual-process-steps-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Allow 2 columns if space */
-        gap: 25px;
+        gap: var(--spacing-card-gap);
     }
     .process-step-card {
-        max-width: 48%; /* Adjust for two columns */
         min-width: unset;
-        padding: 25px 15px;
+        padding: 28px 22px;
     }
     .process-step-card .step-number-visual {
         margin-bottom: 8px;
     }
     .docs-checklist-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 15px;
+        gap: 18px;
         max-width: 700px;
     }
     .doc-item {
         padding: 12px 15px;
         font-size: 0.95em;
     }
+    .dates-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        max-width: 680px;
+    }
     .date-item {
-        max-width: 80%;
         padding: 20px;
+        min-height: 140px;
     }
     .strong-cta-section {
         padding: 60px 0;
@@ -223,16 +355,92 @@
     }
 
     /* Faculty Page Responsive - Tablet */
+    .admin-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 24px;
+        row-gap: 32px;
+    }
+
     .faculty-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        max-width: 100%;
+    }
+
+    .admin-grid .admin-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(100%, 420px);
+    }
+
+    .faculty-card {
+        min-height: 154px;
+        padding: 20px;
+        gap: 18px;
+    }
+
+    .faculty-image-container {
+        width: 124px;
+        flex-basis: 124px;
+    }
+
+    .campus-gallery-item:first-child,
+    .campus-gallery-item:last-child {
+        transform: none;
+    }
+
+    .results-achievers-grid,
+    .performance-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-card-gap);
+    }
+
+    .results-hero-stats,
+    .results-featured-grid,
+    .results-standard-grid,
+    .results-rank-grid,
+    .competitive-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .results-two-column {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .exam-results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-card-gap);
+    }
+
+    .student-life-area-grid,
+    .campus-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-card-gap);
+    }
+
+    .student-activity-item,
+    .student-activity-item.is-reversed {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .student-activity-item.is-reversed .student-activity-image {
+        order: 0;
     }
 }
 
 /* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
+    :root {
+        --spacing-inner-page-top: 0;
+        --spacing-inner-page-bottom: var(--spacing-section-mobile);
+        --spacing-title-content: 24px;
+        --spacing-card-gap: 20px;
+    }
+
     .container {
-        padding: 0 10px;
+        padding: 0 20px;
     }
 
     body {
@@ -252,58 +460,29 @@
     }
 
     .nav-container {
-        height: 64px;
-        padding: 0 15px;
+        height: 60px;
+        padding: 0 16px;
     }
 
     .nav-brand .brand-logo {
-        height: 40px;
+        height: 36px;
     }
 
     .nav-brand .brand-text {
-        font-size: 1.15rem;
+        font-size: 0.88rem;
+        letter-spacing: 0.055em;
     }
 
     .navbar .nav-menu {
-        display: flex; /* Restore flex for mobile menu */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background-color: var(--color-card);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-        border-top: 1px solid rgba(18, 25, 45, 0.05);
-        padding: 10px 0;
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-        transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        gap: 0; /* Links stack vertically without gap */
-    }
-
-    .navbar .nav-menu.is-open {
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
+        padding: 8px 20px 12px;
     }
 
     .navbar .nav-menu a {
-        padding: 12px 20px;
+        padding: 13px 0;
         font-size: 0.95rem;
         font-weight: 600;
         text-align: left;
         border-bottom: 1px solid rgba(18, 25, 45, 0.05);
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* Remove underline indicators on mobile menu for cleaner look */
-    .navbar .nav-menu a::after {
-        display: none;
     }
 
     .navbar .nav-menu a.active {
@@ -350,6 +529,7 @@
         transform: translateX(-50%);
     }
     .contact-links p, .contact-links a {
+        align-items: center;
         justify-content: center;
     }
     .bottom-flex {
@@ -359,38 +539,71 @@
 
     /* Homepage Hero */
     .homepage-hero-shell {
-        height: 60vh;
+        min-height: 78vh;
     }
     .homepage-hero-shell .college-name {
-        font-size: 2em;
+        font-size: 1.9em;
+        line-height: 1.06;
+        margin-bottom: 0;
+    }
+    .homepage-hero-shell .hero-crest {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 11px;
+    }
+    .homepage-hero-shell .hero-brand-lockup {
+        margin-bottom: 15px;
     }
     .homepage-hero-shell .motto {
-        font-size: 1.1em;
+        font-size: 0.82em;
+        letter-spacing: 0.08em;
+        margin-bottom: 18px;
+    }
+    .homepage-hero-shell .supporting-line {
+        font-size: 0.96em;
+        margin-bottom: 28px;
     }
     .homepage-hero-shell .hero-content {
-        padding: 15px;
+        padding: 44px 20px 48px;
+    }
+    .homepage-hero-shell .hero-actions {
+        margin-bottom: 28px;
     }
     .homepage-hero-shell .btn-primary,
     .homepage-hero-shell .btn-secondary {
         width: 90%;
         max-width: 300px;
+        min-height: 48px;
     }
     .achievement-strip {
-        gap: 15px;
+        gap: 10px;
         font-size: 0.85em;
     }
     .achievement-item {
-        padding: 8px 15px;
+        width: 90%;
+        max-width: 300px;
+        min-height: 40px;
+        padding: 9px 16px;
+    }
+    .section-welcome {
+        padding-top: 52px;
+        padding-bottom: 56px;
+    }
+    .section-welcome .content-max-width {
+        margin-top: 24px;
+    }
+    .welcome-actions {
+        margin-top: 28px;
     }
 
     /* Internal Page Hero Small */
-    .page-hero-small {
-        padding: var(--spacing-section-mobile) 0;
+    .page-hero-small, .page-hero {
+        padding: 48px 0;
     }
-    .page-hero-small .page-title {
+    .page-hero-small .page-title, .page-hero h1 {
         font-size: 1.8em;
     }
-    .page-hero-small .page-subtext {
+    .page-hero-small .page-subtext, .page-hero p {
         font-size: 0.9em;
     }
 
@@ -404,30 +617,17 @@
         padding: 25px;
     }
     .vision-mission-cards .card h3 {
-        font-size: 1.4em;
+        font-size: 1.32em;
+    }
+    .vision-card .vision-support-text {
+        padding-top: 20px;
     }
     .about-content-section p {
         font-size: 0.95em;
     }
     .why-vidhyadhama-section .section-title {
         font-size: 1.8em;
-        margin-bottom: 30px;
-    }
-    .why-points {
-        flex-direction: column; /* Stack all cards vertically */
-        align-items: center;
-        gap: 15px;
-    }
-    .why-card {
-        max-width: 90%; /* Full width cards */
-        min-width: unset;
-    }
-    .why-card .icon .lucide-icon svg {
-        width: 28px;
-        height: 28px;
-    }
-    .why-card p {
-        font-size: 0.95em;
+        margin-bottom: var(--spacing-title-content);
     }
     .commitment-strip {
         padding: 25px 0;
@@ -439,27 +639,26 @@
     .academic-system-section .section-title,
     .coaching-support-section .section-title {
         font-size: 1.8em;
-        margin-bottom: 30px;
+        margin-bottom: var(--spacing-title-content);
     }
     .streams-layout {
-        gap: 20px;
+        gap: var(--spacing-card-gap);
     }
     .stream-card {
-        max-width: 90%; /* Full width cards */
+        max-width: 100%;
         padding: 25px;
+        flex-basis: 100%;
     }
     .stream-card h3 {
-        font-size: 1.4em;
+        font-size: 1.28em;
     }
     .info-cards-grid,
     .support-cards-grid {
-        flex-direction: column; /* Stack all cards vertically */
-        align-items: center;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-card-gap);
     }
     .info-cards-grid .info-card,
     .support-cards-grid .support-card {
-        max-width: 90%; /* Full width cards */
         min-width: unset;
         padding: 20px;
     }
@@ -480,7 +679,7 @@
     }
     .eligibility-cards-grid {
         grid-template-columns: 1fr; /* Stack vertically */
-        gap: 20px;
+        gap: var(--spacing-card-gap);
     }
     .eligibility-card {
         padding: 25px;
@@ -494,10 +693,9 @@
     }
     .visual-process-steps-grid {
         grid-template-columns: 1fr; /* Stack vertically */
-        gap: 20px;
+        gap: var(--spacing-card-gap);
     }
     .process-step-card {
-        max-width: 90%; /* Full width on mobile */
         padding: 25px;
     }
     .process-step-card .step-icon svg {
@@ -512,7 +710,7 @@
     }
     .docs-checklist-grid {
         grid-template-columns: 1fr; /* Stack vertically */
-        gap: 10px;
+        gap: 12px;
     }
     .doc-item {
         padding: 12px 15px;
@@ -522,9 +720,14 @@
         width: 24px;
         height: 24px;
     }
+    .dates-info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-card-gap);
+        max-width: 420px;
+    }
     .date-item {
-        max-width: 90%;
         padding: 20px;
+        min-height: auto;
     }
     .date-item h3 {
         font-size: 1.3em;
@@ -542,25 +745,489 @@
     }
 
     /* Faculty Page Responsive - Mobile */
+    .admin-grid,
     .faculty-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        row-gap: 24px;
+    }
+
+    .admin-grid .admin-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        justify-self: stretch;
+        width: auto;
+    }
+
+    .admin-card {
+        min-height: 154px;
+        padding: 30px 24px 26px;
     }
 
     .faculty-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px 20px;
+        flex-direction: row;
+        text-align: left;
+        min-height: 0;
+        padding: 20px;
+        gap: 18px;
     }
 
     .faculty-image-container {
-        width: 130px;
-        height: 130px;
-        margin-bottom: 20px;
+        width: 112px;
+        flex: 0 0 112px;
+        height: auto;
+        aspect-ratio: 1;
+        margin-bottom: 0;
+        border-radius: 16px;
     }
 
     .faculty-info .faculty-name {
         font-size: 1.2rem;
+    }
+
+    .results-achievers-grid,
+    .performance-stats-grid,
+    .exam-results-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-card-gap);
+    }
+
+    .results-hero {
+        padding: 56px 0 44px;
+    }
+
+    .results-hero-content {
+        margin-bottom: 26px;
+    }
+
+    .results-hero-stats,
+    .results-featured-grid,
+    .results-standard-grid,
+    .results-rank-grid,
+    .competitive-groups,
+    .results-two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .results-stat-card {
+        min-height: 78px;
+        padding: 20px 16px;
+    }
+
+    .section-heading-block {
+        margin-bottom: 32px;
+    }
+
+    .result-card-body,
+    .competitive-group,
+    .results-archive-preview {
+        padding: 24px 20px;
+    }
+
+    .results-subsection,
+    .results-two-column {
+        margin-top: 42px;
+    }
+
+    .result-achiever-card,
+    .performance-stat-card,
+    .exam-result-card {
+        padding: 25px 22px;
+    }
+
+    .result-student-image {
+        width: 118px;
+    }
+
+    .performance-stat-card .stat-value {
+        font-size: 2.2rem;
+    }
+
+    .student-life-intro-section p {
+        font-size: 1rem;
+    }
+
+    .student-life-area-grid,
+    .campus-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-card-gap);
+    }
+
+    .student-life-area-card {
+        padding: 26px 22px;
+    }
+
+    .student-activity-item,
+    .student-activity-item.is-reversed {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .student-activity-item.is-reversed .student-activity-image {
+        order: 0;
+    }
+
+    .student-activity-content {
+        padding: 0;
+    }
+
+    .student-life-quote-section {
+        padding: 44px 0;
+    }
+
+    .student-life-quote-section p {
+        font-size: 1.12rem;
+    }
+
+    .student-life-cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-life-cta-actions .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Large Mobile / Small Tablet Refinement (max-width: 600px) */
+@media (max-width: 600px) {
+    :root {
+        --spacing-section-mobile: 44px;
+        --spacing-title-content: 22px;
+        --spacing-card-gap: 18px;
+    }
+
+    .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .homepage-hero-shell {
+        min-height: 76vh;
+    }
+
+    .homepage-hero-shell .college-name {
+        font-size: 1.8em;
+        line-height: 1.07;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 66px;
+        height: 66px;
+        margin-bottom: 10px;
+    }
+
+    .homepage-hero-shell .hero-brand-lockup {
+        margin-bottom: 14px;
+    }
+
+    .homepage-hero-shell .supporting-line {
+        max-width: 34rem;
+    }
+
+    .hero-actions,
+    .student-life-cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-actions .btn,
+    .page-hero-actions .btn,
+    .welcome-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .achievement-strip {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-hero-small,
+    .page-hero {
+        padding: 44px 0;
+    }
+
+    .page-hero-small .page-title,
+    .page-hero h1 {
+        font-size: 1.72em;
+        line-height: 1.14;
+    }
+
+    .about-content-section p,
+    .student-life-intro-section p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .vision-mission-cards .card,
+    .why-card-upgraded,
+    .stream-card,
+    .info-cards-grid .info-card,
+    .support-cards-grid .support-card,
+    .eligibility-card,
+    .process-step-card,
+    .result-achiever-card,
+    .performance-stat-card,
+    .exam-result-card {
+        padding: 24px 20px;
+    }
+
+    .docs-checklist-grid {
+        max-width: 100%;
+    }
+
+    .doc-item {
+        align-items: flex-start;
+    }
+
+    .enquiry-form-block {
+        padding: 24px 20px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .faculty-image-container {
+        width: 96px;
+        flex-basis: 96px;
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .student-activity-item,
+    .student-activity-item.is-reversed {
+        padding: 18px;
+    }
+
+    .map-placeholder {
+        height: 280px;
+    }
+
+    .footer-top {
+        padding: 52px 0;
+    }
+}
+
+/* Standard Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+    }
+
+    .nav-container {
+        height: 58px;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .nav-brand {
+        gap: 8px;
+    }
+
+    .nav-brand .brand-logo {
+        height: 34px;
+    }
+
+    .nav-brand .brand-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.045em;
+    }
+
+    .hamburger {
+        padding: 8px;
+    }
+
+    .homepage-hero-shell {
+        min-height: 74vh;
+    }
+
+    .homepage-hero-shell .hero-content {
+        padding-top: 38px;
+        padding-bottom: 42px;
+    }
+
+    .homepage-hero-shell .college-name {
+        font-size: 1.66em;
+        margin-bottom: 0;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 9px;
+    }
+
+    .homepage-hero-shell .hero-brand-lockup {
+        margin-bottom: 13px;
+    }
+
+    .homepage-hero-shell .motto {
+        font-size: 0.8em;
+        letter-spacing: 0.06em;
+        margin-bottom: 16px;
+    }
+
+    .homepage-hero-shell .supporting-line {
+        font-size: 0.95em;
+        line-height: 1.58;
+        margin-bottom: 28px;
+    }
+
+    .homepage-hero-shell .hero-actions {
+        margin-bottom: 24px;
+    }
+
+    .homepage-hero-shell .btn-primary,
+    .homepage-hero-shell .btn-secondary,
+    .achievement-item {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .section-title {
+        font-size: 1.55rem;
+    }
+
+    .section-title::after {
+        width: 48px;
+        height: 2px;
+    }
+
+    .page-hero-small .page-title,
+    .page-hero h1 {
+        font-size: 1.58em;
+    }
+
+    .page-hero-small .page-subtext,
+    .page-hero p {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .vision-mission-cards .card h3 {
+        font-size: 1.3em;
+    }
+
+    .commitment-strip .strip-text,
+    .student-life-quote-section p {
+        font-size: 1.08rem;
+        line-height: 1.55;
+    }
+
+    .footer-grid {
+        gap: 34px;
+    }
+
+    .links-wrapper {
+        gap: 24px;
+    }
+}
+
+/* Narrow Mobile (max-width: 390px) */
+@media (max-width: 390px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .nav-brand .brand-text {
+        font-size: 0.74rem;
+        letter-spacing: 0.035em;
+    }
+
+    .nav-brand .brand-logo {
+        height: 32px;
+    }
+
+    .homepage-hero-shell .college-name {
+        font-size: 1.56em;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 56px;
+        height: 56px;
+    }
+
+    .homepage-hero-shell .motto {
+        font-size: 0.8em;
+        letter-spacing: 0.055em;
+    }
+
+    .achievement-item {
+        font-size: 0.74rem;
+        letter-spacing: 0.035em;
+    }
+
+    .page-hero-small .page-title,
+    .page-hero h1 {
+        font-size: 1.46em;
+    }
+
+    .date-item h3 {
+        font-size: 1.16em;
+        line-height: 1.3;
+    }
+
+    .student-activity-content h3 {
+        font-size: 1.28rem;
+    }
+}
+
+/* Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+    .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .nav-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .nav-brand .brand-logo {
+        height: 30px;
+    }
+
+    .nav-brand .brand-text {
+        font-size: 0.68rem;
+        letter-spacing: 0.025em;
+    }
+
+    .hamburger span {
+        width: 22px;
+        height: 2px;
+    }
+
+    .homepage-hero-shell .college-name {
+        font-size: 1.5em;
+    }
+
+    .homepage-hero-shell .hero-crest {
+        width: 54px;
+        height: 54px;
+    }
+
+    .homepage-hero-shell .motto {
+        font-size: 0.76em;
+    }
+
+    .homepage-hero-shell .supporting-line {
+        font-size: 0.9em;
+    }
+
+    .btn,
+    .homepage-hero-shell .btn {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .links-wrapper {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
@@ -603,4 +1270,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (max-width: 480px) {
+    .hamburger {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hamburger span {
+        width: 22px;
+        height: 2px;
+    }
 }

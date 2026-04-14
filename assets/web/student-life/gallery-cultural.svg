@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="Cultural event placeholder">
+  <rect width="640" height="420" fill="#f9f7f2"/>
+  <rect x="78" y="122" width="484" height="210" rx="8" fill="#12192D"/>
+  <path d="M126 122h388v58H126z" fill="#9a7b4f"/>
+  <circle cx="230" cy="244" r="42" fill="#dcd0b9"/>
+  <circle cx="322" cy="244" r="42" fill="#dcd0b9"/>
+  <circle cx="414" cy="244" r="42" fill="#dcd0b9"/>
+  <path d="M150 348c26-48 76-76 170-76s144 28 170 76" fill="#dcd0b9"/>
+</svg>
