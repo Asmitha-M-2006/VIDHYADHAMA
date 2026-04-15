@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const studentPlaceholder = '/assets/web/placeholders/student-placeholder.svg';
+    const studentPlaceholder = './assets/web/placeholders/student-placeholder.svg';
 
     const achievers = [
         {

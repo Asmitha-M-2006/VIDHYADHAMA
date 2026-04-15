@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load navbar and footer, then initialize navbar interactivity
     (async () => {
-        const navbarLoaded = await loadPartial('navbar', '/partials/navbar.html');
-        const footerLoaded = await loadPartial('footer', '/partials/footer.html'); // Ensure footer is loaded before initializing icons
+        const navbarLoaded = await loadPartial('navbar', './partials/navbar.html');
+        const footerLoaded = await loadPartial('footer', './partials/footer.html'); // Ensure footer is loaded before initializing icons
         if (navbarLoaded && footerLoaded) {
             lucide.createIcons(); // Initialize Lucide icons
         }
