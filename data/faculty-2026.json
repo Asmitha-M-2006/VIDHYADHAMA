@@ -1,0 +1,137 @@
+{
+  "administration": [
+    {
+      "role": "Principal & Chairman",
+      "name": "C S Rajendra Prasad",
+      "initials": "RP",
+      "department": "Department of Chemistry",
+      "leadershipRank": 1,
+      "image": "./assets/web/placeholders/person-male.svg"
+    },
+    {
+      "role": "Vice Principal",
+      "name": "Achuth S",
+      "initials": "AS",
+      "department": "Department of Physics",
+      "leadershipRank": 2,
+      "image": "./assets/faculty/achuth.jpg",
+      "fallbackImage": "./assets/web/placeholders/person-male.svg"
+    },
+    {
+      "role": "Secretary",
+      "name": "Sindhu D S",
+      "initials": "SS",
+      "department": "Department of Chemistry",
+      "leadershipRank": 3,
+      "image": "./assets/web/placeholders/person-female.svg"
+    }
+  ],
+  "departments": {
+    "science": [
+      {
+        "name": "C S Rajendra Prasad",
+        "qualification": "M.Sc in Chemistry",
+        "subject": "Chemistry",
+        "experience": 16,
+        "image": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Achuth S",
+        "qualification": "M.Sc in Physics",
+        "subject": "Physics",
+        "experience": 21,
+        "image": "./assets/faculty/achuth.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Sindhu D S",
+        "qualification": "M.Sc in Chemistry",
+        "subject": "Chemistry",
+        "experience": 10,
+        "image": "./assets/web/placeholders/person-female.svg"
+      },
+      {
+        "name": "Harish M P",
+        "qualification": "M.Sc in Biology, B.Ed",
+        "subject": "Biology",
+        "experience": 25,
+        "image": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Veena B",
+        "qualification": "MCA",
+        "subject": "Computer Science",
+        "experience": 17,
+        "image": "./assets/web/placeholders/person-female.svg"
+      },
+      {
+        "name": "Shashikumar D",
+        "qualification": "M.Sc in Mathematics, B.Ed",
+        "subject": "Mathematics",
+        "experience": 12,
+        "image": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Pooja C R",
+        "qualification": "M.Sc in Physics",
+        "subject": "Physics",
+        "experience": 2.5,
+        "image": "./assets/faculty/pooja.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-female.svg"
+      }
+    ],
+    "commerce": [
+      {
+        "name": "SADANANDA A",
+        "qualification": "M.Com, B.Ed",
+        "subject": "Accountancy",
+        "experience": 10,
+        "image": "./assets/faculty/sadananda.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Deva Reddy",
+        "qualification": "M.Sc in Statistics, MBA",
+        "subject": "Statistics",
+        "experience": 15,
+        "image": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Sri Shaila",
+        "qualification": "M.Com, B.Ed",
+        "subject": "Business Studies & Accountancy",
+        "experience": 6,
+        "image": "./assets/faculty/Shri.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-female.svg"
+      },
+      {
+        "name": "CHIKKANNASWAMY G B",
+        "qualification": "MA in Economics, B.Ed, D.Ed, PGDFM, MBA",
+        "subject": "Economics",
+        "experience": 13,
+        "image": "./assets/faculty/chikanna.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-male.svg"
+      }
+    ],
+    "language": [
+      {
+        "name": "Indira",
+        "profilePending": true,
+        "image": "./assets/web/placeholders/person-female.svg"
+      },
+      {
+        "name": "Prasanna S K",
+        "qualification": "MA in Kannada, B.Ed",
+        "subject": "Kannada",
+        "experience": 10,
+        "image": "./assets/faculty/prasanna.jpg",
+        "fallbackImage": "./assets/web/placeholders/person-male.svg"
+      },
+      {
+        "name": "Santhosh Yadav",
+        "profilePending": true,
+        "image": "./assets/web/placeholders/person-male.svg"
+      }
+    ]
+  }
+}
