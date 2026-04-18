@@ -631,8 +631,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return students.flatMap((student) => {
             return student.achievements
                 .filter((achievement) => achievement.type === type)
-                .map((achievement) => ({ student, achievement }));
+                .map((achievement) => ({
+                    student,
+                    achievement,
+                    admission: getAdmissionAchievement(student)
+                }));
         });
+    }
+
+    function getAdmissionAchievement(student) {
+        return student.achievements.find((achievement) => achievement.type === 'admission');
     }
 
     function sortNeetEntries(a, b) {
@@ -660,21 +668,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return getAchievementEntries('kcet').sort(sortKcetEntries);
         }
 
-        if (sectionType === 'admissions') {
-            return getAchievementEntries('admission').sort((a, b) => {
-                return b.achievement.year - a.achievement.year || a.student.name.localeCompare(b.student.name);
-            });
-        }
-
         return [];
     }
 
     function createRankDetails(achievement) {
         return [
-            achievement.engineeringRank ? `Engineering Rank: ${achievement.engineeringRank}` : '',
             achievement.agricultureRank ? `Agriculture Rank: ${achievement.agricultureRank}` : '',
             achievement.architectureRank ? `Architecture Rank: ${achievement.architectureRank}` : ''
         ].filter(Boolean);
+    }
+
+    function getPrimaryKcetRank(achievement) {
+        if (achievement.engineeringRank) {
+            return achievement.engineeringRank;
+        }
+
+        return getBestKcetRank(achievement);
     }
 
     function renderCard(student) {
@@ -703,19 +712,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderAchievementCard(entry, sectionType) {
-        const { student, achievement } = entry;
+        const { student, achievement, admission } = entry;
         const card = document.createElement('article');
         card.className = 'result-card result-card-support reveal-on-scroll';
 
         const rankDetails = sectionType === 'kcet' ? createRankDetails(achievement) : [];
-        const highlight = sectionType === 'neet'
-            ? achievement.score
-            : sectionType === 'admissions'
-                ? achievement.course
-                : 'KCET Rank Details';
-        const meta = sectionType === 'admissions'
-            ? [achievement.college, achievement.year].filter(Boolean).join(' • ')
-            : [achievement.year].filter(Boolean).join('');
+        const primaryLine = sectionType === 'neet'
+            ? `NEET: ${achievement.score}`
+            : `KCET Rank: ${getPrimaryKcetRank(achievement)}`;
+        const outcomeLine = admission
+            ? `Secured ${admission.course} at ${admission.college}`
+            : '';
 
         card.innerHTML = `
             <div class="result-card-image">
@@ -723,9 +730,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="result-card-body">
               <h3>${escapeHTML(student.name)}</h3>
-              <p class="result-highlight">${escapeHTML(highlight)}</p>
+              <p class="result-highlight">${escapeHTML(primaryLine)}</p>
               ${rankDetails.length ? `<div class="result-detail-list">${rankDetails.map((item) => `<span>${escapeHTML(item)}</span>`).join('')}</div>` : ''}
-              ${meta ? `<p class="result-meta">${escapeHTML(meta)}</p>` : ''}
+              ${outcomeLine ? `<p class="result-outcome">${escapeHTML(outcomeLine)}</p>` : ''}
             </div>
         `;
 

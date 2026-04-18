@@ -1775,7 +1775,7 @@ a:hover {
 }
 
 .result-card-support {
-    height: 306px;
+    height: 324px;
 }
 
 .result-card:hover {
@@ -1856,6 +1856,18 @@ a:hover {
     font-size: 0.86rem;
     font-weight: 650;
     line-height: 1.35;
+}
+
+.result-outcome {
+    color: var(--color-text-muted);
+    font-size: 0.86rem;
+    font-weight: 650;
+    line-height: 1.42;
+    margin-bottom: 0;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 @keyframes resultsPanelOpen {
