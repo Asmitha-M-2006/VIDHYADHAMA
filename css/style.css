@@ -1728,6 +1728,36 @@ a:hover {
     margin: 0 auto;
 }
 
+.results-expand-panel {
+    margin-top: 22px;
+}
+
+.results-expand-panel.is-open {
+    animation: resultsPanelOpen 0.28s ease both;
+}
+
+.results-show-more {
+    display: block;
+    margin: 28px auto 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.results-subsection {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.results-subsection + .results-subsection {
+    margin-top: 44px;
+}
+
+.results-subsection h3 {
+    font-size: 1.34rem;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
 .result-card {
     min-width: 0;
     height: 276px;
@@ -1742,6 +1772,10 @@ a:hover {
     padding: 22px 20px;
     overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.result-card-support {
+    height: 306px;
 }
 
 .result-card:hover {
@@ -1805,6 +1839,34 @@ a:hover {
     font-weight: 650;
     line-height: 1.45;
     margin-bottom: 0;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.result-detail-list {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.result-detail-list span {
+    color: var(--color-text-muted);
+    font-size: 0.86rem;
+    font-weight: 650;
+    line-height: 1.35;
+}
+
+@keyframes resultsPanelOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .reveal-on-scroll {

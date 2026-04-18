@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const studentPlaceholder = './assets/web/placeholders/student-placeholder.svg';
-    const HERO_RANKER_COUNT = 3;
+    const BOARD_FEATURED_COUNT = 6;
 
     const students = [
         {
@@ -610,23 +610,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getSectionStudents(sectionType) {
-        if (sectionType === 'top-achievers') {
+        if (sectionType === 'board-featured') {
             return students
                 .filter((student) => getPrimaryBoardAchievement(student))
                 .sort(sortByBoardPriority)
-                .slice(0, HERO_RANKER_COUNT);
+                .slice(0, BOARD_FEATURED_COUNT);
         }
 
-        if (sectionType === 'all-achievers') {
+        if (sectionType === 'board-extended') {
             return students
                 .filter((student) => getPrimaryBoardAchievement(student))
-                .sort(sortByBoardPriority);
+                .sort(sortByBoardPriority)
+                .slice(BOARD_FEATURED_COUNT);
         }
 
         return [];
     }
 
-    function renderCard(student, sectionType) {
+    function getAchievementEntries(type) {
+        return students.flatMap((student) => {
+            return student.achievements
+                .filter((achievement) => achievement.type === type)
+                .map((achievement) => ({ student, achievement }));
+        });
+    }
+
+    function sortNeetEntries(a, b) {
+        return parseScore(b.achievement.score) - parseScore(a.achievement.score);
+    }
+
+    function getBestKcetRank(achievement) {
+        return [
+            achievement.engineeringRank,
+            achievement.agricultureRank,
+            achievement.architectureRank
+        ].filter(Boolean).sort((a, b) => a - b)[0] || Number.POSITIVE_INFINITY;
+    }
+
+    function sortKcetEntries(a, b) {
+        return getBestKcetRank(a.achievement) - getBestKcetRank(b.achievement);
+    }
+
+    function getSectionEntries(sectionType) {
+        if (sectionType === 'neet') {
+            return getAchievementEntries('neet').sort(sortNeetEntries);
+        }
+
+        if (sectionType === 'kcet') {
+            return getAchievementEntries('kcet').sort(sortKcetEntries);
+        }
+
+        if (sectionType === 'admissions') {
+            return getAchievementEntries('admission').sort((a, b) => {
+                return b.achievement.year - a.achievement.year || a.student.name.localeCompare(b.student.name);
+            });
+        }
+
+        return [];
+    }
+
+    function createRankDetails(achievement) {
+        return [
+            achievement.engineeringRank ? `Engineering Rank: ${achievement.engineeringRank}` : '',
+            achievement.agricultureRank ? `Agriculture Rank: ${achievement.agricultureRank}` : '',
+            achievement.architectureRank ? `Architecture Rank: ${achievement.architectureRank}` : ''
+        ].filter(Boolean);
+    }
+
+    function renderCard(student) {
         const card = document.createElement('article');
         card.className = 'result-card reveal-on-scroll';
 
@@ -651,12 +702,71 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
-    function renderStandardSection(section, sectionStudents, sectionType) {
+    function renderAchievementCard(entry, sectionType) {
+        const { student, achievement } = entry;
+        const card = document.createElement('article');
+        card.className = 'result-card result-card-support reveal-on-scroll';
+
+        const rankDetails = sectionType === 'kcet' ? createRankDetails(achievement) : [];
+        const highlight = sectionType === 'neet'
+            ? achievement.score
+            : sectionType === 'admissions'
+                ? achievement.course
+                : 'KCET Rank Details';
+        const meta = sectionType === 'admissions'
+            ? [achievement.college, achievement.year].filter(Boolean).join(' • ')
+            : [achievement.year].filter(Boolean).join('');
+
+        card.innerHTML = `
+            <div class="result-card-image">
+              <img src="${escapeHTML(student.image || studentPlaceholder)}" alt="${escapeHTML(student.name)}" loading="lazy">
+            </div>
+            <div class="result-card-body">
+              <h3>${escapeHTML(student.name)}</h3>
+              <p class="result-highlight">${escapeHTML(highlight)}</p>
+              ${rankDetails.length ? `<div class="result-detail-list">${rankDetails.map((item) => `<span>${escapeHTML(item)}</span>`).join('')}</div>` : ''}
+              ${meta ? `<p class="result-meta">${escapeHTML(meta)}</p>` : ''}
+            </div>
+        `;
+
+        return card;
+    }
+
+    function renderBoardSection(section, sectionStudents) {
         const fragment = document.createDocumentFragment();
         sectionStudents
-            .map((student) => renderCard(student, sectionType))
+            .map((student) => renderCard(student))
             .forEach((card) => fragment.appendChild(card));
         section.replaceChildren(fragment);
+    }
+
+    function renderAchievementSection(section, entries, sectionType) {
+        const fragment = document.createDocumentFragment();
+        entries
+            .map((entry) => renderAchievementCard(entry, sectionType))
+            .forEach((card) => fragment.appendChild(card));
+        section.replaceChildren(fragment);
+    }
+
+    function setupBoardToggle() {
+        const toggle = document.querySelector('.results-show-more');
+        const panel = document.getElementById('boardMoreResults');
+
+        if (!toggle || !panel) {
+            return;
+        }
+
+        toggle.addEventListener('click', () => {
+            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!isExpanded));
+            toggle.textContent = isExpanded ? 'Show More Results' : 'Show Less Results';
+            panel.hidden = isExpanded;
+            panel.classList.toggle('is-open', !isExpanded);
+
+            if (!isExpanded) {
+                observeRevealItems(panel.querySelectorAll('.reveal-on-scroll'));
+            }
+        });
     }
 
     function observeRevealItems(items) {
@@ -679,15 +789,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('[data-results-section]').forEach((section) => {
         const sectionType = section.dataset.resultsSection;
+        const isBoardSection = sectionType === 'board-featured' || sectionType === 'board-extended';
 
-        const sectionStudents = getSectionStudents(sectionType);
-        renderStandardSection(section, sectionStudents, sectionType);
+        if (isBoardSection) {
+            const sectionStudents = getSectionStudents(sectionType);
+            renderBoardSection(section, sectionStudents);
 
-        if (!sectionStudents.length) {
-            section.closest('section')?.remove();
+            if (!sectionStudents.length && sectionType === 'board-extended') {
+                document.querySelector('.results-show-more')?.remove();
+            }
+            return;
+        }
+
+        const entries = getSectionEntries(sectionType);
+        renderAchievementSection(section, entries, sectionType);
+
+        if (!entries.length) {
+            section.closest('.results-subsection, section')?.remove();
         }
     });
 
+    setupBoardToggle();
     observeRevealItems(document.querySelectorAll('.reveal-on-scroll'));
 
     if (window.lucide) {

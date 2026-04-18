@@ -22,25 +22,49 @@
         </div>
       </section>
 
-      <section class="results-top-section section-padding">
+      <section class="results-board-section section-padding">
         <div class="container">
           <div class="section-heading-block reveal-on-scroll">
-            <p class="section-kicker">Top Achievers</p>
-            <h2 class="section-title text-center">Leading Board Performers</h2>
-            <p>Top three board achievers based on rank and marks.</p>
+            <p class="section-kicker">Board Exam Results</p>
+            <h2 class="section-title text-center">Board Exam Results</h2>
+            <p>Top rank holders and high-scoring board performers presented first, with extended results available below.</p>
           </div>
-          <div class="results-card-grid results-top-grid" data-results-section="top-achievers"></div>
+          <div class="results-card-grid results-board-grid" data-results-section="board-featured"></div>
+          <div class="results-expand-panel" id="boardMoreResults" hidden>
+            <div class="results-card-grid results-board-grid" data-results-section="board-extended"></div>
+          </div>
+          <button class="btn btn-primary results-show-more" type="button" aria-expanded="false" aria-controls="boardMoreResults">
+            Show More Results
+          </button>
         </div>
       </section>
 
-      <section class="results-all-section section-padding bg-light-ivory">
+      <section class="results-competitive-section section-padding bg-light-ivory">
         <div class="container">
           <div class="section-heading-block reveal-on-scroll">
-            <p class="section-kicker">All Achievers</p>
-            <h2 class="section-title text-center">Board Achievement Records</h2>
-            <p>Student results shown in a clean, consistent grid.</p>
+            <p class="section-kicker">Competitive Exam Results</p>
+            <h2 class="section-title text-center">Competitive Exam Results</h2>
+            <p>NEET and KCET performances organized for quick review.</p>
           </div>
-          <div class="results-card-grid results-all-grid" data-results-section="all-achievers"></div>
+          <div class="results-subsection reveal-on-scroll">
+            <h3>NEET Achievers</h3>
+            <div class="results-card-grid results-support-grid" data-results-section="neet"></div>
+          </div>
+          <div class="results-subsection reveal-on-scroll">
+            <h3>KCET Achievers</h3>
+            <div class="results-card-grid results-support-grid" data-results-section="kcet"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-outcomes-section section-padding">
+        <div class="container">
+          <div class="section-heading-block reveal-on-scroll">
+            <p class="section-kicker">Other Academic Achievements</p>
+            <h2 class="section-title text-center">Other Academic Achievements</h2>
+            <p>Academic outcomes showing courses and institutions secured by students.</p>
+          </div>
+          <div class="results-card-grid results-support-grid" data-results-section="admissions"></div>
         </div>
       </section>
     </main>
