@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const studentPlaceholder = './assets/web/placeholders/student-placeholder.svg';
     const HERO_RANKER_COUNT = 3;
-    const FEATURED_COUNT = 5;
-    const TOP_BOARD_INITIAL_COUNT = 9;
-    const DISTINCTION_INITIAL_COUNT = 10;
-    const usedStudentIds = new Set();
 
     const students = [
         {
@@ -600,32 +596,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return getBoardAchievements(student).some((achievement) => Boolean(achievement.rank));
     }
 
-    function isCompetitive(student) {
-        return student.achievements.some((achievement) => {
-            return ['neet', 'kcet', 'admission'].includes(achievement.type);
-        });
-    }
-
-    function getCompetitivePriority(student) {
-        const bestKcetRank = student.achievements
-            .filter((achievement) => achievement.type === 'kcet')
-            .flatMap((achievement) => [
-                achievement.architectureRank,
-                achievement.engineeringRank,
-                achievement.agricultureRank
-            ])
-            .filter(Boolean)
-            .sort((a, b) => a - b)[0] || 999999;
-
-        const bestNeetScore = student.achievements
-            .filter((achievement) => achievement.type === 'neet')
-            .reduce((highest, achievement) => Math.max(highest, parseScore(achievement.score)), 0);
-
-        const hasAdmission = student.achievements.some((achievement) => achievement.type === 'admission');
-
-        return (hasAdmission ? 1000000 : 0) + bestNeetScore * 1000 - bestKcetRank;
-    }
-
     function sortByBoardPriority(a, b) {
         if (hasStateRank(a) !== hasStateRank(b)) {
             return Number(hasStateRank(b)) - Number(hasStateRank(a));
@@ -640,222 +610,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getSectionStudents(sectionType) {
-        if (sectionType === 'hero-rankers') {
+        if (sectionType === 'top-achievers') {
             return students
-                .filter((student) => hasStateRank(student))
+                .filter((student) => getPrimaryBoardAchievement(student))
                 .sort(sortByBoardPriority)
                 .slice(0, HERO_RANKER_COUNT);
         }
 
-        if (sectionType === 'featured') {
+        if (sectionType === 'all-achievers') {
             return students
-                .filter((student) => !usedStudentIds.has(student.id))
-                .filter((student) => hasStateRank(student) || getBoardScore(student) >= 585)
-                .sort(sortByBoardPriority)
-                .slice(0, FEATURED_COUNT);
-        }
-
-        if (sectionType === 'top-board') {
-            return students
-                .filter((student) => !usedStudentIds.has(student.id))
-                .filter((student) => getBoardScore(student) >= 570)
+                .filter((student) => getPrimaryBoardAchievement(student))
                 .sort(sortByBoardPriority);
-        }
-
-        if (sectionType === 'science' || sectionType === 'commerce') {
-            return students
-                .filter((student) => !usedStudentIds.has(student.id))
-                .filter((student) => {
-                    const achievement = getPrimaryBoardAchievement(student);
-                    const score = getBoardScore(student);
-
-                    return achievement
-                        && achievement.stream.toLowerCase() === sectionType
-                        && score >= 510
-                        && score <= 569;
-                })
-                .sort((a, b) => getBoardScore(b) - getBoardScore(a));
-        }
-
-        if (sectionType === 'competitive') {
-            return students
-                .filter((student) => !usedStudentIds.has(student.id))
-                .filter(isCompetitive)
-                .sort((a, b) => getCompetitivePriority(b) - getCompetitivePriority(a));
-        }
-
-        if (sectionType === 'archive') {
-            return students
-                .filter((student) => !usedStudentIds.has(student.id))
-                .sort((a, b) => {
-                    const boardDiff = getBoardScore(b) - getBoardScore(a);
-                    return boardDiff || a.name.localeCompare(b.name);
-                });
         }
 
         return [];
     }
 
-    function getYears(student) {
-        return [...new Set(student.achievements.map((achievement) => achievement.year).filter(Boolean))]
-            .sort((a, b) => b - a);
-    }
-
-    function getCategory(student, sectionType) {
-        if (sectionType === 'hero-rankers' || sectionType === 'featured') {
-            return hasStateRank(student) ? 'State Rank' : 'Board Topper';
-        }
-
-        if (sectionType === 'top-board') {
-            return 'Board';
-        }
-
-        if (sectionType === 'science' || sectionType === 'commerce') {
-            return 'Distinction';
-        }
-
-        if (isCompetitive(student)) {
-            return 'Competitive';
-        }
-
-        return 'Archive';
-    }
-
-    function getHighlight(student, sectionType) {
-        const primaryBoard = getPrimaryBoardAchievement(student);
-
-        if (hasStateRank(student) && primaryBoard?.rank) {
-            return primaryBoard.rank;
-        }
-
-        if (sectionType === 'competitive') {
-            const admission = student.achievements.find((achievement) => achievement.type === 'admission');
-            const neet = student.achievements.find((achievement) => achievement.type === 'neet');
-            const kcet = student.achievements.find((achievement) => achievement.type === 'kcet');
-
-            if (admission) {
-                return `${admission.course} - ${admission.college}`;
-            }
-
-            if (neet) {
-                return `NEET ${neet.score}`;
-            }
-
-            if (kcet) {
-                return 'KCET Achiever';
-            }
-        }
-
-        if (primaryBoard?.score) {
-            return primaryBoard.score;
-        }
-
-        return getCategory(student, sectionType);
-    }
-
-    // Priority classes keep visual hierarchy in CSS without changing the data model.
-    function getPriorityClasses(student, sectionType) {
-        const classes = [];
-        const boardScore = getBoardScore(student);
-
-        if (sectionType === 'hero-rankers') {
-            classes.push('result-card-hero-ranker');
-        }
-
-        if (hasStateRank(student)) {
-            classes.push('ranker');
-        }
-
-        if (boardScore >= 590) {
-            classes.push('topper');
-        }
-
-        if (sectionType === 'archive') {
-            classes.push('result-card-archive-light');
-        }
-
-        return classes.join(' ');
-    }
-
-    function formatAchievement(achievement) {
-        if (achievement.type === 'board') {
-            return [
-                achievement.year,
-                achievement.stream,
-                achievement.score,
-                achievement.rank
-            ].filter(Boolean).join(' · ');
-        }
-
-        if (achievement.type === 'neet') {
-            return ['NEET', achievement.score].filter(Boolean).join(' · ');
-        }
-
-        if (achievement.type === 'kcet') {
-            return [
-                achievement.architectureRank ? `Architecture Rank ${achievement.architectureRank}` : '',
-                achievement.engineeringRank ? `Engineering Rank ${achievement.engineeringRank}` : '',
-                achievement.agricultureRank ? `Agriculture Rank ${achievement.agricultureRank}` : ''
-            ].filter(Boolean).join(' · ');
-        }
-
-        if (achievement.type === 'admission') {
-            return [achievement.course, achievement.college].filter(Boolean).join(' · ');
-        }
-
-        return '';
-    }
-
-    function buildMetaItems(student, sectionType) {
-        if (sectionType === 'competitive') {
-            return student.achievements.map(formatAchievement).filter(Boolean);
-        }
-
-        const primaryBoard = getPrimaryBoardAchievement(student);
-
-        return [
-            primaryBoard?.year,
-            primaryBoard?.stream,
-            primaryBoard?.score,
-            primaryBoard?.rank
-        ].filter(Boolean);
-    }
-
     function renderCard(student, sectionType) {
         const card = document.createElement('article');
-        card.className = [
-            'result-card',
-            `result-card-${sectionType}`,
-            getPriorityClasses(student, sectionType),
-            'reveal-on-scroll'
-        ].filter(Boolean).join(' ');
+        card.className = 'result-card reveal-on-scroll';
 
-        const years = getYears(student);
-        const yearLabel = years.length ? years[0] : 'Result';
-        const metaItems = buildMetaItems(student, sectionType)
-            .map((item) => `<li>${escapeHTML(item)}</li>`)
-            .join('');
+        const primaryBoard = getPrimaryBoardAchievement(student);
+        const highlight = primaryBoard?.rank || primaryBoard?.score || 'Achievement';
+        const supportingDetails = [
+            primaryBoard?.year,
+            primaryBoard?.stream
+        ].filter(Boolean).join(' • ');
 
         card.innerHTML = `
             <div class="result-card-image">
               <img src="${escapeHTML(student.image || studentPlaceholder)}" alt="${escapeHTML(student.name)}" loading="lazy">
             </div>
             <div class="result-card-body">
-              <div class="result-card-topline">
-                <span class="year-badge">${escapeHTML(yearLabel)}</span>
-                <span class="result-category">${escapeHTML(getCategory(student, sectionType))}</span>
-              </div>
               <h3>${escapeHTML(student.name)}</h3>
-              <p class="result-highlight">${escapeHTML(getHighlight(student, sectionType))}</p>
-              <ul class="result-meta-list">${metaItems}</ul>
+              <p class="result-highlight">${escapeHTML(highlight)}</p>
+              <p class="result-meta">${escapeHTML(supportingDetails)}</p>
             </div>
         `;
 
         return card;
-    }
-
-    function addStudentsToUsedList(sectionStudents) {
-        sectionStudents.forEach((student) => usedStudentIds.add(student.id));
     }
 
     function renderStandardSection(section, sectionStudents, sectionType) {
@@ -864,71 +657,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .map((student) => renderCard(student, sectionType))
             .forEach((card) => fragment.appendChild(card));
         section.replaceChildren(fragment);
-    }
-
-    // Large sections render a short first view and expand only when requested.
-    function renderLimitedSection(section, sectionStudents, sectionType, limit, buttonLabel = 'View Full Results') {
-        const visibleStudents = sectionStudents.slice(0, limit);
-        renderStandardSection(section, visibleStudents, sectionType);
-
-        const oldToggle = section.parentElement.querySelector('.results-section-toggle');
-        oldToggle?.remove();
-
-        if (sectionStudents.length <= limit) {
-            return;
-        }
-
-        const toggle = document.createElement('button');
-        toggle.className = 'btn btn-primary results-section-toggle';
-        toggle.type = 'button';
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = buttonLabel;
-
-        toggle.addEventListener('click', () => {
-            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-            const nextStudents = isExpanded ? sectionStudents.slice(0, limit) : sectionStudents;
-
-            toggle.setAttribute('aria-expanded', String(!isExpanded));
-            toggle.textContent = isExpanded ? buttonLabel : 'Hide Results';
-            section.classList.toggle('is-expanded', !isExpanded);
-            renderStandardSection(section, nextStudents, sectionType);
-            observeRevealItems(section.querySelectorAll('.reveal-on-scroll'));
-        });
-
-        section.insertAdjacentElement('afterend', toggle);
-    }
-
-    function renderDistinctionSection(section, sectionStudents, sectionType) {
-        const visibleStudents = sectionStudents.slice(0, DISTINCTION_INITIAL_COUNT);
-        renderStandardSection(section, visibleStudents, sectionType);
-
-        const oldToggle = section.parentElement.querySelector('.results-distinction-toggle');
-        oldToggle?.remove();
-
-        if (sectionStudents.length <= DISTINCTION_INITIAL_COUNT) {
-            return;
-        }
-
-        const toggle = document.createElement('button');
-        toggle.className = 'btn btn-primary results-section-toggle results-distinction-toggle';
-        toggle.type = 'button';
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = 'View More';
-
-        toggle.addEventListener('click', () => {
-            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-            toggle.setAttribute('aria-expanded', String(!isExpanded));
-            toggle.textContent = isExpanded ? 'View More' : 'Show Less';
-            section.classList.toggle('is-expanded', !isExpanded);
-            renderStandardSection(
-                section,
-                isExpanded ? sectionStudents.slice(0, DISTINCTION_INITIAL_COUNT) : sectionStudents,
-                sectionType
-            );
-            observeRevealItems(section.querySelectorAll('.reveal-on-scroll'));
-        });
-
-        section.insertAdjacentElement('afterend', toggle);
     }
 
     function observeRevealItems(items) {
@@ -952,75 +680,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-results-section]').forEach((section) => {
         const sectionType = section.dataset.resultsSection;
 
-        if (['state-rank', 'neet', 'kcet', 'professional'].includes(sectionType)) {
-            section.closest('.results-subsection, .competitive-group')?.remove();
-            return;
-        }
-
         const sectionStudents = getSectionStudents(sectionType);
-
-        if (sectionType === 'top-board') {
-            renderLimitedSection(section, sectionStudents, sectionType, TOP_BOARD_INITIAL_COUNT);
-        } else if (sectionType === 'science' || sectionType === 'commerce') {
-            renderDistinctionSection(section, sectionStudents, sectionType);
-        } else {
-            renderStandardSection(section, sectionStudents, sectionType);
-        }
-
-        addStudentsToUsedList(sectionStudents);
+        renderStandardSection(section, sectionStudents, sectionType);
 
         if (!sectionStudents.length) {
-            section.closest('.results-subsection, .competitive-group')?.remove();
-        }
-    });
-
-    const archiveToggle = document.querySelector('.results-archive-toggle');
-    const archivePanel = document.getElementById('resultsArchiveGrid');
-
-    if (archiveToggle && archivePanel) {
-        archiveToggle.addEventListener('click', () => {
-            const isExpanded = archiveToggle.getAttribute('aria-expanded') === 'true';
-            archiveToggle.setAttribute('aria-expanded', String(!isExpanded));
-            archivePanel.hidden = isExpanded;
-            archiveToggle.textContent = isExpanded ? 'View Full Results Archive' : 'Hide Results Archive';
-            observeRevealItems(archivePanel.querySelectorAll('.reveal-on-scroll'));
-        });
-    }
-
-    const lightbox = document.getElementById('resultsLightbox');
-    const lightboxImage = lightbox ? lightbox.querySelector('img') : null;
-    const lightboxClose = lightbox ? lightbox.querySelector('.results-lightbox-close') : null;
-
-    document.addEventListener('click', (event) => {
-        const posterButton = event.target.closest('.result-poster-button');
-        if (!posterButton || !lightbox || !lightboxImage) {
-            return;
-        }
-        lightboxImage.src = posterButton.dataset.poster;
-        lightboxImage.alt = posterButton.dataset.posterAlt || 'Result poster preview';
-        lightbox.setAttribute('aria-hidden', 'false');
-        lightbox.classList.add('is-open');
-        lightboxClose?.focus();
-    });
-
-    function closeLightbox() {
-        if (!lightbox || !lightboxImage) {
-            return;
-        }
-        lightbox.classList.remove('is-open');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImage.src = '';
-    }
-
-    lightboxClose?.addEventListener('click', closeLightbox);
-    lightbox?.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-    });
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            closeLightbox();
+            section.closest('section')?.remove();
         }
     });
 

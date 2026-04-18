@@ -406,18 +406,8 @@
         gap: var(--spacing-card-gap);
     }
 
-    .results-hero-showcase,
-    .results-featured-grid,
-    .results-standard-grid,
-    .results-competitive-grid,
-    .results-rank-grid,
-    .competitive-groups {
+    .results-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .results-two-column {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 
     .exam-results-grid {
@@ -817,42 +807,17 @@
         padding: 56px 0 44px;
     }
 
-    .results-hero-content {
-        margin-bottom: 26px;
-    }
-
-    .results-hero-showcase,
-    .results-featured-grid,
-    .results-standard-grid,
-    .results-competitive-grid,
-    .results-rank-grid,
-    .competitive-groups,
-    .results-two-column {
+    .results-card-grid {
         grid-template-columns: 1fr;
     }
 
-    .result-card-hero-ranker {
-        grid-template-columns: 96px minmax(0, 1fr);
-        min-height: 190px;
-    }
-
-    .result-card-hero-ranker .result-card-image {
+    .result-card-image {
         width: 96px;
+        height: 96px;
     }
 
     .section-heading-block {
         margin-bottom: 32px;
-    }
-
-    .result-card-body,
-    .competitive-group,
-    .results-archive-preview {
-        padding: 24px 20px;
-    }
-
-    .results-subsection,
-    .results-two-column {
-        margin-top: 42px;
     }
 
     .result-achiever-card,
@@ -1305,17 +1270,6 @@
         padding: 8px;
     }
 
-    .result-card-hero-ranker {
-        grid-template-columns: 1fr;
-    }
-
-    .result-card-hero-ranker .result-card-image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        border-right: 0;
-        border-bottom: 1px solid rgba(244, 228, 188, 0.28);
-    }
 }
 
 @media (max-width: 360px) {
